@@ -1,0 +1,100 @@
+:root {
+    /* variables for all the repeated colors */
+    --primary_color: #05966C;
+    --yellow_green: #B1AD00;
+}
+
+body {
+    margin: 0px;
+}
+
+/* navbar  */
+.navbar {
+    display: flex;
+    height: 146px;
+    align-items: center;
+    background-color: var(--primary_color);
+}
+
+.logo {
+    width: 1253px;
+    height: 100%;
+}
+
+.brand_name,
+.brand_tag_line {
+    margin-left: 155px;
+    color: white;
+}
+
+.brand_name {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 45px;
+    margin-bottom: 5px;
+}
+
+.brand_tag_line {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.sign_in_button,
+.sign_up_button {
+    height: 42px;
+    width: 120px;
+}
+
+.sign_in_button {
+    font-weight: bold;
+    background-color: var(--yellow_green);
+    border: none;
+    border-radius: 5px;
+    margin-right: 21px;
+}
+
+.sign_in_button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: var(--primary_color);
+}
+
+.sign_up_button {
+    color: white;
+    font-weight: bold;
+    background-color: transparent;
+    border: solid white 1px;
+    border-radius: 5px;
+}
+
+.sign_up_button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: var(--primary_color);
+}
+
+
+/* main content */
+.container {
+    border: solid black 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content_container {
+    margin-top: 40px;
+    border: solid black 1px;
+    width: 1488px;
+    height: 780px;
+}
+
+.header_container {
+    border: solid black 1px;
+}
+
+.content_header {
+    font-size: 32px;
+    margin-left: 53px;
+}
