@@ -1,3 +1,8 @@
+<?php
+if (isset($_POST["signup"])) {
+    header('Location: homepage.php');
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -43,8 +48,3 @@
 </body>
 
 </html>
-<?php
-if (isset($_POST["signup"])) {
-    header('Location: ../index.php');
-}
-?>

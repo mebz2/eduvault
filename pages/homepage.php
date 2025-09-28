@@ -1,3 +1,7 @@
+<?php
+session_start();
+$username = $_SESSION["username"];
+?>
 <!DOCTYPE html>
 <html>
 
@@ -6,6 +10,7 @@
     <title>Home</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="homepage.css">
 </head>
 
 <body>
@@ -15,22 +20,18 @@
             <p class="brand-tag-line">Unlock your learning, all in one place</p>
         </div>
 
-        <button onclick="location.href='pages/login.php'" class="sign-in-button">Sign In</button>
-        <button onclick="location.href='pages/signup.php'" class="sign-up-button">Sign Up</button>
+        <button onclick="location.href='../index.php'" class="sign-in-button">Sign In</button>
+        <button onclick="location.href='signup.php'" class="sign-up-button">Sign Up</button>
     </div>
     <div class="container">
         <div class="content-container">
             <div class="header-container">
-                <h2 class="content-header">Welcome back, Student!</h2>
+                <h2 class="content-header">Welcome back, <?php echo $username; ?>!</h2>
             </div>
             <div class="card-container">
                 <div class="card">
-                    <img src="assets/icons/group.png" class="card-icon">
+                    <img src="../assets/icons/group.png" class="card-icon">
                     <p class="card-text">Study Groups</p>
-                </div>
-                <div class="card">
-                    <img src="assets/icons/book.png" class="card-icon">
-                    <p class="card-text">Archieve</p>
                 </div>
             </div>
 

@@ -14,6 +14,7 @@
         <p class="label"><?php echo $label; ?></p>
         <input
             type="<?php echo $type; ?>"
+            name="<?php echo $name; ?>"
             class="text-box">
     </div>
 </body>
