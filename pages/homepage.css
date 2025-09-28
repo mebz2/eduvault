@@ -1,8 +1,4 @@
-:root {
-    /* variables for all the repeated colors */
-    --primary_color: #05966C;
-    --yellow_green: #B1AD00;
-}
+@import url("../index.css");
 
 body {
     margin: 0px;
@@ -21,32 +17,32 @@ body {
     height: 100%;
 }
 
-.brand_name,
-.brand_tag_line {
+.brand-name,
+.brand-tag-line {
     margin-left: 155px;
     color: white;
 }
 
-.brand_name {
+.brand-name {
     font-size: 40px;
     font-weight: bold;
     margin-top: 45px;
     margin-bottom: 5px;
 }
 
-.brand_tag_line {
+.brand-tag-line {
     font-size: 16px;
     font-weight: bold;
     margin-top: 5px;
 }
 
-.sign_in_button,
-.sign_up_button {
+.sign-in-button,
+.sign-up-button {
     height: 42px;
     width: 120px;
 }
 
-.sign_in_button {
+.sign-in-button {
     font-weight: bold;
     background-color: var(--yellow_green);
     border: none;
@@ -54,13 +50,13 @@ body {
     margin-right: 21px;
 }
 
-.sign_in_button:hover {
+.sign-in-button:hover {
     cursor: pointer;
     background-color: white;
     color: var(--primary_color);
 }
 
-.sign_up_button {
+.sign-up-button {
     color: white;
     font-weight: bold;
     background-color: transparent;
@@ -68,7 +64,7 @@ body {
     border-radius: 5px;
 }
 
-.sign_up_button:hover {
+.sign-up-button:hover {
     cursor: pointer;
     background-color: white;
     color: var(--primary_color);
@@ -77,24 +73,95 @@ body {
 
 /* main content */
 .container {
-    border: solid black 1px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.content_container {
+.content-container {
     margin-top: 40px;
-    border: solid black 1px;
     width: 1488px;
-    height: 780px;
+    height: 880px;
 }
 
-.header_container {
-    border: solid black 1px;
-}
 
-.content_header {
+.content-header {
     font-size: 32px;
     margin-left: 53px;
+}
+
+/* cards */
+.card-container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 316px;
+    width: 1388px;
+    margin-left: 50px;
+    margin-top: 50px;
+    gap: 101px;
+}
+
+.study-groups {
+    margin-left: 50px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 293px;
+    height: 258px;
+    background-color: var(--secondary_color);
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px 1px rgb(192, 192, 192);
+}
+
+.card:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 5px rgb(192, 192, 192);
+}
+
+.card-icon {
+    height: 100px;
+    width: 100px;
+}
+
+.card-text {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.recent-activity {
+    box-shadow: 0px 0px 4px 1px rgb(192, 192, 192);
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 15px;
+    background-color: var(--secondary_color);
+    height: 386px;
+}
+
+.recent-activity-header-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.recent-activity-header {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 3px;
+    margin-left: 40px;
+}
+
+.recent-activity-tag-line {
+    margin-top: 3px;
+    margin-left: 40px;
+    font-size: 13px;
+    color: var(--light_text);
+}
+
+.activities {
+    border: solid black 1px;
+    margin-left: 40px;
 }

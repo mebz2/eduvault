@@ -4,15 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="pages/homepage.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="sinup.css">
 </head>
 
 <body>
-
-    <?php
-    include 'pages/homepage.php';
-    ?>
+    <h1>Sign Up</h1>
 </body>
 
 </html>
