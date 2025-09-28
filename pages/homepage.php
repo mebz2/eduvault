@@ -16,7 +16,7 @@
         </div>
 
         <button onclick="location.href='pages/login.php'" class="sign-in-button">Sign In</button>
-        <button class="sign-up-button">Sign Up</button>
+        <button onclick="location.href='pages/signup.php'" class="sign-up-button">Sign Up</button>
     </div>
     <div class="container">
         <div class="content-container">
