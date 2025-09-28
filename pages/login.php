@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html>
 
@@ -7,11 +9,32 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../components/textbox.css">
 </head>
 
 <body>
+    <div class="parent">
+        <div class="main-div">
+            <h1 class="brand">EduVault</h1>
+            <div class="login-form-container">
+                <h2 class="login-text">Login</h2>
+                <p class="login-tag">Enter your credentials to access your account.</p>
+                <form action="" method="post" class="login-form">
+                    <?php
+                    $label = "Username";
+                    $type = "text";
+                    include '../components/textfield.php';
 
-    <script src="" async defer></script>
+                    $label = "Password";
+                    $type = "password";
+                    include '../components/textfield.php';
+                    ?>
+                    <input type="submit" value="Login" class="login-button">
+                </form>
+                <p>Don't have an account? <a href="">Create one here</a></p>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
