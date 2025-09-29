@@ -20,8 +20,9 @@ $username = $_SESSION["username"];
             <p class="brand-tag-line">Unlock your learning, all in one place</p>
         </div>
 
-        <button onclick="location.href='../index.php'" class="sign-in-button">Sign In</button>
-        <button onclick="location.href='signup.php'" class="sign-up-button">Sign Up</button>
+        <button onclick="location.href='../index.php'" class="account">
+            <img src="../assets/icons/profile.png" class="account-image">
+        </button>
     </div>
     <div class="container">
         <div class="content-container">

@@ -4,7 +4,7 @@ if (isset($_POST["login"])) {
     if (!empty(trim($_POST["username"]))) {
         $_SESSION["username"] = $_POST["username"];
     } else {
-        $_SESSION["username"] = "NONE";
+        $_SESSION["username"] = "Student";
     }
     header('Location: pages/homepage.php');
     exit;

@@ -41,7 +41,7 @@ if (isset($_POST["signup"])) {
                     ?>
                     <input type="submit" name="signup" value="Create Account" class="signup-button">
                 </form>
-                <p>Already have an account? <a href="login.php">Sign in here</a></p>
+                <p>Already have an account? <a href="../index.php">Sign in here</a></p>
             </div>
         </div>
     </div>
