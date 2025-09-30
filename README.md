@@ -12,11 +12,45 @@
 - Make sure you have a browser
 
 ### Step 2
-- You need to create a mysql database using xampp
 - Go to the xampp control panel and start apache and mysql
 
+### Step 3
+- Paste this url into your browser to start setting up the mysql database
+```
+http://localhost/phpmyadmin/index.php
+```
+- Go to databases and create a database called **eduvault** (you can name it whatever you like but for minimum configuration name it as this).
+- Go to the new database you created and start creating these tables with the given specifications
+- **NOTE**: everything is case sensitive make sure you properly name it
+- The format is attribute name, data type, constraints(if any).
+  
+1. **users**
+   - id varchar(7) (primary key)
+   - email varchar(255) (unique)
+   - username varhcar(20)
+   - password varchar(255)
+2. **study_groups**
+   - id varchar(7) (primary key)
+   - group_name varchar(100)
+   - group_description text
+   - creation_date datetime (DEFAULT(current date time))
+   - group_creator varchar(7) (Foreign key refrencing an id of a user from **users** table)
+3. **group_member**
+   - group_id varchar(7) (Foreign key refrencing an id of a group from **study_groups** table) 
+   - user_id varchar(7) (Foreign key refrencing an id of a user from **users** table)
+   - joined_date datetime (DEFAULT(current date and time))
+   - role enum('member', 'admin')
+4. **files**
+   - id varchar(7) (primary key)
+   - user_id varchar(7) (Foreign key refrencing an id of a user from **users** table)
+   - group_id varchar(7) (Foreign key refrencing an id of a group from **study_groups** table)
+   - file_name varchar(255)
+   - file_path varchar(255)
+   - uploaded_date datetime (DEFAULT(current date and time))
+
+- **If you chose a custom name for the database, change the specifications in database.php found in the root directory. And you if gave any of the attributes custome names make sure to change the sql queries in the php files.**
 ### Step 4
-- After you install xampp and setup the database go to the directory you installed xampp and go to the htdocs directory.
+- After you installation and setup go to **htdocs** which is found in the directory you installed **xampp**.
 
 For Linux:
 ```bash
@@ -30,7 +64,7 @@ cd /opt/lampp/htdocs
 ```
 http://localhost/eduvault
 ```
-- You can now use the website as you please, **have fun :)**
+- You can now use the website, **have fun :)**
 
 
 ## Technologies 
@@ -38,36 +72,11 @@ http://localhost/eduvault
 - CSS
 - PHP
 - JS
-- MySql
 - XAMPP
+  - MySQL
+  - Apache Server
 
-## Database
-### Entities
-1. **User**:
-   - ID(pk)
-   - email (unique)
-   - username
-   - password
-   - User Creation Data/Time
-2. **Study Group**:
-   - ID(pk)
-   - Group Name
-   - Group Description
-   - Group Creation Data/Time
-   - Group Created by (FK)
-3. **Group Members**:
-   - Group id (FK)
-   - Member id (FK)
-   - joined date
-   - role (member, admin)
 
-4. **Files**:
-   - ID(PK)
-   - Group id (FK)
-   - Uploader id (FK)
-   - file name
-   - file path
-   - uploaded_at Date/Time
 
 
 ## Todo
@@ -82,19 +91,3 @@ http://localhost/eduvault
     - [ ] Files page
     - [ ] Members page
 
-## Functions
-
-- str_trim(string): removes white spaces before or after the string
-- str_cmp(str1, str2): compares two strings
-- str_len(string): length of a string
-- header(): for redirection after login
-- password_has($password, PASSWORD_DEFAULT): $password is the password and PASSWORD_DEFAULT is the hashing algorithm it is gonna use
-- password_verify($password, $hash): this function compares the password with the hash to see if they are compatible and returns a bool
-- mysqli_query($conn, $sql): to send a query to the database
-- mysqli_num_rows($result): returns the number of rows from the result of a query
-- mysqli_close($conn): to close a mysql connection
-
-
-## CHECK
-- auto index
-- ht access
