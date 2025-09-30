@@ -1,4 +1,4 @@
-@import url("../index.css");
+@import url("variables.css");
 
 .parent {
     height: 100vh;
@@ -8,15 +8,14 @@
 }
 
 .main-div {
-    height: 820px;
+    height: 700px;
     width: 520px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
-.signup-form-container {
+.login-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,17 +24,17 @@
     border-radius: 10px;
     background-color: #F6F6F6;
     box-shadow: 0px 0px 5px 5px lightgray;
-    height: 720px;
+    height: 550px;
     width: 510px;
 }
 
-.signup-form {
+.login-form {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-.signup-tag {
+.login-tag {
     font-size: 14px;
     color: var(--light_text);
 }

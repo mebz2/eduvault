@@ -1,4 +1,4 @@
-@import url("../index.css");
+@import url("variables.css");
 
 .parent {
     height: 100vh;
@@ -8,14 +8,15 @@
 }
 
 .main-div {
-    height: 700px;
+    height: 820px;
     width: 520px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
-.login-form-container {
+.signup-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,17 +25,17 @@
     border-radius: 10px;
     background-color: #F6F6F6;
     box-shadow: 0px 0px 5px 5px lightgray;
-    height: 550px;
+    height: 720px;
     width: 510px;
 }
 
-.login-form {
+.signup-form {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-.login-tag {
+.signup-tag {
     font-size: 14px;
     color: var(--light_text);
 }
@@ -61,4 +62,9 @@ input[type=submit]:hover {
 a {
     color: var(--primary_color);
     text-decoration: none;
+}
+
+.error-box {
+    color: red;
+    background-color: red;
 }
