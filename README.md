@@ -1,5 +1,10 @@
 # README
-
+## Description
+- **EduVault** is a collaborative learning platform that helps students and educators organize, share, and engage with study materials more effectively. It brings together key tools in one space, making group learning seamless and productive.
+### Who it EduVault for
+  - **Students** working on group assignments or preparing for exams.
+  - **Study groups** who want a shared space for learning resources.
+  - **Educators and tutors** who want to organize class materials.
 ## Setup
 
 ### Step 1
@@ -10,22 +15,23 @@
 - You need to create a mysql database using xampp
 - Go to the xampp control panel and start apache and mysql
 
-### Step 3
+### Step 4
 - After you install xampp and setup the database go to the directory you installed xampp and go to the htdocs directory.
 
 For Linux:
 ```bash
 cd /opt/lampp/htdocs
 ```
-### Step 4
+### Step 5
 - Clone the repository into the htdocs folder
 
-### Step 5
+### Step 6 
 - Go to your browser and paste the following
 ```
 http://localhost/eduvault
 ```
-- You can use the website as you please, **have fun :)**
+- You can now use the website as you please, **have fun :)**
+
 
 ## Technologies 
 - HTML
@@ -34,6 +40,51 @@ http://localhost/eduvault
 - JS
 - MySql
 - XAMPP
+
+## Database
+### Entities
+1. **User**:
+   - ID(pk)
+   - email (unique)
+   - username
+   - password
+   - User Creation Data/Time
+2. **Study Group**:
+   - ID(pk)
+   - Group Name
+   - Group Description
+   - Group Creation Data/Time
+   - Group Created by (FK)
+3. **Group Members**:
+   - Group id (FK)
+   - Member id (FK)
+   - joined date
+   - role (member, admin)
+4. **Invitations**:
+   - ID(PK)
+   - Group id (FK)
+   - Sender id (FK)
+   - Reciever id (FK)
+   - status (pending, accepted, declined)
+   - sent_at Date/Time
+   - responded_at Date/Time
+5. **Files**:
+   - ID(PK)
+   - Group id (FK)
+   - Uploader id (FK)
+   - file name
+   - file path
+   - uploaded_at Date/Time
+6. **Tasks**:
+   - ID(PK)
+   - Group id (FK)
+   - Creator id (FK)
+   - Title
+   - Description
+   - Status (pending, completed)
+   - Created_at Date/Time
+   - Completed_at Date/Time
+
 ## Todo
 - [ ] Design the database
 - [x] Make the name of the student that logged in appear on the homepage
@@ -53,7 +104,7 @@ http://localhost/eduvault
       - [ ] button to delete a certain task 
     - [ ] Members page
 
-# Functions
+## Functions
 
 - str_trim(string): removes white spaces before or after the string
 - str_cmp(str1, str2): compares two strings
@@ -65,3 +116,7 @@ http://localhost/eduvault
 - mysqli_num_rows($result): returns the number of rows from the result of a query
 - mysqli_close($conn): to close a mysql connection
 
+
+## CHECK
+- auto index
+- ht access
