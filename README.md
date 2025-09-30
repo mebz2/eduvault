@@ -49,6 +49,9 @@ http://localhost/phpmyadmin/index.php
    - uploaded_date datetime (DEFAULT(current date and time))
 
 - **If you chose a custom name for the database, change the specifications in database.php found in the root directory. And you if gave any of the attributes custome names make sure to change the sql queries in the php files.**
+
+### ER Diagram
+![](assets/images/er-diagram.png)
 ### Step 4
 - After you installation and setup go to **htdocs** which is found in the directory you installed **xampp**.
 
