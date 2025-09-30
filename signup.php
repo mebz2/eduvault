@@ -48,8 +48,9 @@ include 'assets/scripts/generateId.php';
 $errors = [];
 
 if (isset($_POST["signup"])) {
-    $usern = trim($_POST["username"]);
-    $email = trim($_POST["email"]);
+    // sanitize username and email so that the user cannot enter malicious scripts
+    $usern = trim(filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS));
+    $email = trim(filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL));
     $pass = $_POST["password"];
     $cpass = $_POST["cpassword"];
 
@@ -58,7 +59,7 @@ if (isset($_POST["signup"])) {
         array_push($errors, "All fields are required!");
     }
 
-    //check if the length of the password 
+    //check if the length of the password exceeds the minimum
     if (strlen($pass) < 8) {
         array_push($errors, "Password must be atleast 8 characters long!");
     }
@@ -80,7 +81,7 @@ if (isset($_POST["signup"])) {
         array_push($errors, "A user with this email already exists, try again with another email address!");
     }
 
-    // generate an id
+    // generate an id and if the id already exists try again (max of 5 times)
     $attempts = 0;
     do {
         $id = generateID('U');
@@ -89,18 +90,23 @@ if (isset($_POST["signup"])) {
         $attempts++;
     } while ($id_exists > 0 && $attempts < 5);
 
+    // if it fails to generate a random id tell the user to try again
     if ($attempt >= 5) {
-        array_push($errors, "Failed to generate random id");
+        array_push($errors, "Failed to generate random id, please try again :)");
     }
 
+    // if there are no errors
     if (empty($errors)) {
-        $hashpass = password_hash($pass, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO users (id, email, username, password) VALUES ('$id', '$email', '$usern', '$hashpass')";
+        $hashpass = password_hash($pass, PASSWORD_DEFAULT); // hash the password
+        $sql = "INSERT INTO users (id, email, username, password) VALUES ('$id', '$email', '$usern', '$hashpass')"; //query to create a user
         mysqli_query($conn, $sql);
         session_start();
-        $_SESSION["username"] = $usern;
+        $_SESSION["username"] = $usern; //put the username in the session global variable
+        mysqli_close($conn); //close the connection before redirecting
         header("Location: homepage.php");
+        exit();
     } else {
+        // if there are errors display them in a popup
         echo "
     <div class='error-box'>
         <h3>Registration Errors</h3>
@@ -111,7 +117,5 @@ if (isset($_POST["signup"])) {
         echo "</ul></div>";
     }
 }
-
-
 mysqli_close($conn);
 ?>

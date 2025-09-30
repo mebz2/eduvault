@@ -13,9 +13,7 @@ require_once('layout/header.php');
         <p class="brand-tag-line">Unlock your learning, all in one place</p>
     </div>
 
-    <button onclick="location.href='assets/scripts/logout.php'" class="account">
-        <img src="assets/icons/profile.png" class="account-image">
-    </button>
+    <button onclick="location.href='assets/scripts/logout.php'" class="account"> Logout </button>
 </div>
 <div class="container">
     <div class="content-container">

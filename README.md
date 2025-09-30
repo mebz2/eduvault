@@ -86,6 +86,7 @@ http://localhost/eduvault
 - [x] Design the database
 - [x] Make the name of the student that logged in appear on the homepage
 - [x] Instead of sign in and out buttons havea an account button to logout
+- [ ] Link the login page with the database
 - [ ] Build study group page
   - [ ] The page to show every group you are in
     -  [ ] figure out a way to make it dynamic
