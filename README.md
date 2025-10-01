@@ -86,7 +86,9 @@ http://localhost/eduvault
 - [x] Design the database
 - [x] Make the name of the student that logged in appear on the homepage
 - [x] Instead of sign in and out buttons havea an account button to logout
-- [ ] Link the login page with the database
+- [x] Link the login page with the database
+- [ ] make the error popups go away after clicking on them or after a certain amount of time
+- [ ] figure out a way for index.php to route the user based on sessions
 - [ ] Build study group page
   - [ ] The page to show every group you are in
     -  [ ] figure out a way to make it dynamic

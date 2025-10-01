@@ -37,13 +37,23 @@ body {
     margin-top: 5px;
 }
 
-account {
+.account {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid 1px black;
+    width: 100px;
+    height: 40px;
+    background-color: #FFCCCC;
+    border: 2px solid #FF0707;
+    color: #FF0000;
+    font-weight: bold;
+    border-radius: 5px;
 }
 
+.account:hover {
+    cursor: pointer;
+    background-color: white;
+}
 
 
 
@@ -82,8 +92,9 @@ account {
     gap: 101px;
 }
 
-.study-groups {
-    margin-left: 50px;
+.card-container a {
+    text-decoration: none;
+    color: black;
 }
 
 .card {
@@ -113,6 +124,7 @@ account {
     font-size: 20px;
     font-weight: 600;
 }
+
 
 .recent-activity {
     box-shadow: 0px 0px 4px 1px rgb(192, 192, 192);

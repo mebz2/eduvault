@@ -4,6 +4,7 @@ $stylesheets = array(
     'assets/stylesheets/textbox.css',
     'assets/stylesheets/errorbox.css',
 );
+$title = "Sign Up";
 require_once('layout/header.php');
 require_once('database.php');
 ?>
@@ -57,21 +58,25 @@ if (isset($_POST["signup"])) {
     // check if all the text boxes are filled
     if (empty($usern) || empty($email) || empty($pass) || empty($cpass)) {
         array_push($errors, "All fields are required!");
+        goto display_error;
     }
 
     //check if the length of the password exceeds the minimum
     if (strlen($pass) < 8) {
         array_push($errors, "Password must be atleast 8 characters long!");
+        goto display_error;
     }
 
     // check if passwords match
     if (strcmp($pass, $cpass)) {
         array_push($errors, "Password and Confirmation password do not match!");
+        goto display_error;
     }
 
     //check length of username
     if (strlen($usern) > 20) {
         array_push($errors, "Username is too long, maximum is 20 characters!");
+        goto display_error;
     }
 
     //check if email is already in the database
@@ -79,6 +84,7 @@ if (isset($_POST["signup"])) {
     $email_result = mysqli_query($conn, $email_query);
     if (mysqli_num_rows($email_result) > 0) {
         array_push($errors, "A user with this email already exists, try again with another email address!");
+        goto display_error;
     }
 
     // generate an id and if the id already exists try again (max of 5 times)
@@ -93,6 +99,7 @@ if (isset($_POST["signup"])) {
     // if it fails to generate a random id tell the user to try again
     if ($attempt >= 5) {
         array_push($errors, "Failed to generate random id, please try again :)");
+        goto display_error;
     }
 
     // if there are no errors
@@ -106,6 +113,7 @@ if (isset($_POST["signup"])) {
         header("Location: homepage.php");
         exit();
     } else {
+        display_error:
         // if there are errors display them in a popup
         echo "
     <div class='error-box'>

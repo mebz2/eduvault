@@ -4,6 +4,7 @@ $stylesheets = array(
     'assets/stylesheets/errorbox.css',
     'assets/stylesheets/textbox.css'
 );
+$title = "Login";
 require_once('layout/header.php');
 require_once('database.php');
 ?>
@@ -44,6 +45,7 @@ if (isset($_POST["login"])) {
 
     if (empty($email) || empty($pass)) {
         array_push($error, "All fields are required!");
+        goto display_error;
     }
 
     $find_user = "SELECT * FROM users WHERE email = '{$email}'";
@@ -52,23 +54,27 @@ if (isset($_POST["login"])) {
         $user = mysqli_fetch_assoc($user_result);
 
         $username = $user['username'];
+        $user_id = $user['id'];
         $hash_password = $user['password'];
 
         if (!password_verify($pass, $hash_password)) {
             array_push($error, "Your password is incorrect please try again!");
-            $hash_password = null;
+            goto display_error;
         }
     } else {
         array_push($error, "A user with this email does not exist!");
+        goto display_error;
     }
 
     if (empty($error)) {
         session_start();
         $_SESSION['username'] = $username;
+        $_SESSION['user_id'] = $user_id;
         mysqli_close($conn);
         header("Location: homepage.php");
         exit();
     } else {
+        display_error:
         echo "
     <div class='error-box'>
         <h3>Login Errors</h3>
