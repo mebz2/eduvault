@@ -88,12 +88,15 @@ http://localhost/eduvault
 - [x] Instead of sign in and out buttons havea an account button to logout
 - [x] Link the login page with the database
 - [ ] make the error popups go away after clicking on them or after a certain amount of time
-- [ ] figure out a way for index.php to route the user based on sessions
+- [x] figure out a way for index.php to route the user based on sessions
 - [ ] Build study group page
   - [ ] The page to show every group you are in
     -  [ ] figure out a way to make it dynamic
-  - [ ] popup to create a group
+  - [x] popup to create a group
   - [ ] pages inside each group
     - [ ] Files page
+      - [ ] design the page 
+        - [ ] upload files popup
+          - [ ] upload files logic
     - [ ] Members page
 
