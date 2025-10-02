@@ -1,4 +1,9 @@
 <?php
 require_once 'helper/auth.php';
-echo "auth reached";
-requireLogin();
+if (isLoggedIn()) {
+    header("Location: pages/homepage.php");
+    exit();
+} else {
+    header("Location: pages/login.php");
+    exit();
+}
