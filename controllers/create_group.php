@@ -1,9 +1,10 @@
 <?php
-require_once 'generateId.php'; // for the function that generates ids
-require_once '../config/connect.php'; // to connect to the database
+
+require_once '../../controllers/generateId.php'; // for the function that generates ids
+require_once '../../config/connect.php'; // to connect to the database
 
 session_start();
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["create-button"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["create-button"])) {
     if (!isset($_SESSION["group_form_submitted"])) {
         $errors = [];
         $group_name = trim(filter_input(INPUT_POST, "group-name", FILTER_SANITIZE_SPECIAL_CHARS));
@@ -18,9 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["create-button"])) {
         do {
             $id = generateID('G');
             $id_query = "SELECT * FROM study_groups WHERE id = '{$id}'";
-            $id_exists = mysqli_query($conn, $id_query);
+            $id_exists = mysqli_num_rows(mysqli_query($conn, $id_query));
             $attempts++;
-        } while (!empty($id_exists) > 0 && $attempts < 5);
+        } while ($id_exists && $attempts < 5);
 
 
         // if it fails to generate a random id tell the user to try again
@@ -29,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["create-button"])) {
         }
 
         //if there are no errors
-
         if (empty($errors)) {
             $user_id = $_SESSION["user_id"];
             $create_group = "INSERT INTO study_groups (id, group_name, group_description, group_creator) VALUES('$id', '$group_name', '$group_description', '$user_id')";
@@ -37,8 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["create-button"])) {
 
             $add_member = "INSERT INTO group_member (group_id, user_id, role) VALUES('$id', '$user_id', 'admin')";
             mysqli_query($conn, $add_member);
+
+            // mark form as submitted to stop resubmission in reloads
+            $_SESSION["group_form_submitted"] = true;
         } else {
-            display_error:
             echo "
     <div class='error-box'>
         <h3>Group Errors</h3>
