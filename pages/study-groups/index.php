@@ -7,9 +7,11 @@ $stylesheets = array(
 );
 $title = "Study Groups";
 require_once '../../layout/header.php';
+require_once '../../controllers/create_group.php';
 ?>
 
-<div class="parent" id="parent">
+<!-- if there is an error keep the blur on the parent div since the popup won't go away -->
+<div class="parent <?= ($currentError) ? 'blur' : '' ?>" id="parent">
     <div class="navbar">
         <div class="logo">
             <a href="../homepage.php" class="back">
@@ -24,12 +26,9 @@ require_once '../../layout/header.php';
         </div>
         <button class="create-group-button" id="create-group-button">Create Group</button>
     </div>
-    <?php
-    echo $group_name;
-    echo $group_description;
-    ?>
+
 </div>
-<div class="popup" id="popup">
+<div class="popup" id="popup" style="display: <?php echo ($currentError) ? 'block' : 'none'; ?>">
     <div class="popup-content" id="popup-content">
         <form action="index.php" method="post" class="create-group">
             <div>
@@ -46,10 +45,18 @@ require_once '../../layout/header.php';
                 $name = "group-name";
                 include '../../components/textfield.php';
                 ?>
+                <!-- if there is an error display the error message -->
+                <div class="error-text">
+                    <?php echo ($currentError && $error[$currentError]['id'] == "group_name") ? $error[$currentError]['message'] : '' ?>
+                </div>
             </div>
             <div>
                 <label name="group-description">Group Description</label>
                 <textarea name="group-description" class="group-description" id="" rows="5"></textarea>
+                <!-- if there is an error display the error message -->
+                <div class="error-text">
+                    <?php echo ($currentError && $error[$currentError]['id'] == "group_description") ? $error[$currentError]['message'] : '' ?>
+                </div>
             </div>
             <div>
                 <input type="submit" value="Create Group" name="create-button">
@@ -63,10 +70,4 @@ $scripts = array(
     '../../assets/js/create_group.js',
 );
 require_once '../../layout/footer.php';
-$error = [];
-require_once '../../controllers/create_group.php';
-if (!empty($error)) {
-    require_once '../../components/errorbox.php';
-}
-
 ?>

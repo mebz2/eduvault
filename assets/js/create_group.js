@@ -4,11 +4,11 @@ const close = document.getElementById('close-button')
 const popup = document.getElementById('popup');
 button.addEventListener('click', () => {
     popup.style.display = "block"
-    parent.classList.toggle('blur')
+    parent.classList.add('blur')
 })
 
 close.addEventListener('click', () => {
     popup.style.display = "none"
-    parent.classList.toggle('blur')
+    parent.classList.remove('blur')
 })
 
