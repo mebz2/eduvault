@@ -6,6 +6,8 @@ $stylesheets = array(
 );
 $title = "Login";
 require_once('../layout/header.php');
+require_once '../controllers/login_script.php';
+
 ?>
 
 <div class="parent">
@@ -21,13 +23,22 @@ require_once('../layout/header.php');
                 $name = "email";
                 $id = "email";
                 include '../components/textfield.php';
+                ?>
+                <span id="email-error" class="error-text">
+                    <?php echo ($currentError && $error[$currentError]['id'] == "email") ? $error[$currentError]['message'] : '' ?>
+                </span>
 
+
+                <?php
                 $label = "Password";
                 $type = "password";
                 $name = "password";
                 $id = "password";
                 include '../components/textfield.php';
                 ?>
+                <span id="password-error" class="error-text">
+                    <?php echo ($currentError && $error[$currentError]['id'] == "password") ? $error[$currentError]['message'] : '' ?>
+                </span>
                 <input type="submit" value="Login" name="login" class="login-button">
             </form>
             <p>Don't have an account? <a href="signup.php">Create one here</a></p>
@@ -37,5 +48,5 @@ require_once('../layout/header.php');
 
 <?php
 require_once('../layout/footer.php');
-require_once '../controllers/login_script.php';
+
 ?>

@@ -13,13 +13,14 @@
 
 .text-box {
     margin-top: 5px;
-    /* width: 400px;
-    height: 41px; */
     padding-left: 20px;
     box-sizing: border-box;
     border-radius: 8px;
     border: solid 0.5px lightgray;
 }
+
+
+
 
 .text-box:focus {
     border: none;
