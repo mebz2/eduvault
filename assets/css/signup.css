@@ -64,7 +64,7 @@ a {
     text-decoration: none;
 }
 
-.error-box {
+.error-text {
     color: red;
-    background-color: red;
+    font-size: 12px;
 }

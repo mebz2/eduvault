@@ -58,6 +58,16 @@ input[type=submit]:hover {
     background-color: rgb(7, 165, 7);
 }
 
+.error-box {
+    box-shadow: 0 0 5px 2px red;
+    border: 1px solid red;
+}
+
+.error-text {
+    color: red;
+    font-size: 12px;
+}
+
 a {
     color: var(--primary_color);
     text-decoration: none;

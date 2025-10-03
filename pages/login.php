@@ -24,7 +24,7 @@ require_once '../controllers/login_script.php';
                 $id = "email";
                 include '../components/textfield.php';
                 ?>
-                <span id="email-error" class="error-text">
+                <span class="error-text">
                     <?php echo ($currentError && $error[$currentError]['id'] == "email") ? $error[$currentError]['message'] : '' ?>
                 </span>
 
@@ -36,7 +36,7 @@ require_once '../controllers/login_script.php';
                 $id = "password";
                 include '../components/textfield.php';
                 ?>
-                <span id="password-error" class="error-text">
+                <span class="error-text">
                     <?php echo ($currentError && $error[$currentError]['id'] == "password") ? $error[$currentError]['message'] : '' ?>
                 </span>
                 <input type="submit" value="Login" name="login" class="login-button">

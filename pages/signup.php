@@ -5,7 +5,8 @@ $stylesheets = array(
     '../assets/css/errorbox.css'
 );
 $title = "Sign Up";
-require_once('../layout/header.php');
+require_once '../layout/header.php';
+require_once '../controllers/signup_script.php';
 ?>
 <div class="parent">
     <div class="main-div">
@@ -19,22 +20,40 @@ require_once('../layout/header.php');
                 $type = "text";
                 $name = "username";
                 include '../components/textfield.php';
+                ?>
+                <span class="error-text">
+                    <?php echo ($currentError && $error[$currentError]['id'] == "username") ? $error[$currentError]['message'] : '' ?>
+                </span>
 
+                <?php
                 $label = "Email Address";
                 $type = "email";
                 $name = "email";
                 include '../components/textfield.php';
+                ?>
+                <span class="error-text">
+                    <?php echo ($currentError && $error[$currentError]['id'] == "email") ? $error[$currentError]['message'] : '' ?>
+                </span>
 
+                <?php
                 $label = "Password";
                 $type = "password";
                 $name = "password";
                 include '../components/textfield.php';
+                ?>
+                <span class="error-text">
+                    <?php echo ($currentError && $error[$currentError]['id'] == "password") ? $error[$currentError]['message'] : '' ?>
+                </span>
 
+                <?php
                 $label = "Confirm Password";
                 $type = "password";
                 $name = "cpassword";
                 include '../components/textfield.php';
                 ?>
+                <span class="error-text">
+                    <?php echo ($currentError && $error[$currentError]['id'] == "cpassword") ? $error[$currentError]['message'] : '' ?>
+                </span>
                 <input type="submit" name="signup" value="Create Account" class="signup-button">
             </form>
             <p>Already have an account? <a href="login.php">Sign in here</a></p>
@@ -44,6 +63,5 @@ require_once('../layout/header.php');
 
 <?php
 require_once('../layout/footer.php');
-require_once '../controllers/signup_script.php';
 
 ?>

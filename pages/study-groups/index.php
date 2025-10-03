@@ -2,10 +2,11 @@
 $stylesheets = array(
     '../../assets/css/study-groups.css',
     '../../assets/css/popup.css',
-    '../../assets/css/textbox.css'
+    '../../assets/css/textbox.css',
+    '../../assets/css/errorbox.css'
 );
 $title = "Study Groups";
-require_once('../../layout/header.php');
+require_once '../../layout/header.php';
 ?>
 
 <div class="parent" id="parent">
@@ -61,6 +62,11 @@ require_once('../../layout/header.php');
 $scripts = array(
     '../../assets/js/create_group.js',
 );
-require_once('../../layout/footer.php');
+require_once '../../layout/footer.php';
+$error = [];
 require_once '../../controllers/create_group.php';
+if (!empty($error)) {
+    require_once '../../components/errorbox.php';
+}
+
 ?>

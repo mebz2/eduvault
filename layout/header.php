@@ -8,6 +8,7 @@
         <?php echo isset($title) ? $title : 'EduVault' ?>
     </title>
     <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <link rel="icon" type="image/png" href="/eduvault/assets/icons/favicon.png">
     <?php
     if (count($stylesheets) > 0) {
         foreach ($stylesheets as $style) {
