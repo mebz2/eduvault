@@ -59,7 +59,7 @@ require_once('../../layout/header.php');
 
 <?php
 $scripts = array(
-    '../../assets/js/create_group.js'
+    '../../assets/js/create_group.js',
 );
 require_once('../../layout/footer.php');
 require_once '../../controllers/create_group.php';

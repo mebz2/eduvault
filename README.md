@@ -48,7 +48,7 @@ http://localhost/phpmyadmin/index.php
    - file_path varchar(255)
    - uploaded_date datetime (DEFAULT(current date and time))
 
-- **If you chose a custom name for the database, change the specifications in database.php found in the root directory. And you if gave any of the attributes custome names make sure to change the sql queries in the php files.**
+- **If you chose a custom name for the database, change the specifications in *config/connect.php* found in the root directory. And if you gave any of the attributes custom names make sure to change the sql queries in the php files.**
 
 ### ER Diagram
 ![](assets/images/er-diagram.png)
@@ -87,7 +87,7 @@ http://localhost/eduvault
 - [x] Make the name of the student that logged in appear on the homepage
 - [x] Instead of sign in and out buttons havea an account button to logout
 - [x] Link the login page with the database
-- [ ] make the error popups go away after clicking on them or after a certain amount of time
+- [x] make the error popups go away after clicking on them or after a certain amount of time
 - [x] figure out a way for index.php to route the user based on sessions
 - [ ] Build study group page
   - [ ] The page to show every group you are in

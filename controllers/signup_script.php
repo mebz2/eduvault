@@ -2,7 +2,7 @@
 require_once '../config/connect.php';
 require_once '../controllers/generateId.php';
 
-$errors = [];
+$error = [];
 
 if (isset($_POST["signup"])) {
     // sanitize username and email so that the user cannot enter malicious scripts
@@ -13,25 +13,25 @@ if (isset($_POST["signup"])) {
 
     // check if all the text boxes are filled
     if (empty($usern) || empty($email) || empty($pass) || empty($cpass)) {
-        array_push($errors, "All fields are required!");
+        array_push($error, "All fields are required!");
         goto display_error;
     }
 
     //check if the length of the password exceeds the minimum
     if (strlen($pass) < 8) {
-        array_push($errors, "Password must be atleast 8 characters long!");
+        array_push($error, "Password must be atleast 8 characters long!");
         goto display_error;
     }
 
     // check if passwords match
     if (strcmp($pass, $cpass)) {
-        array_push($errors, "Password and Confirmation password do not match!");
+        array_push($error, "Password and Confirmation password do not match!");
         goto display_error;
     }
 
     //check length of username
     if (strlen($usern) > 20) {
-        array_push($errors, "Username is too long, maximum is 20 characters!");
+        array_push($error, "Username is too long, maximum is 20 characters!");
         goto display_error;
     }
 
@@ -39,7 +39,7 @@ if (isset($_POST["signup"])) {
     $email_query = "SELECT * FROM users WHERE email = '{$email}'";
     $email_result = mysqli_query($conn, $email_query);
     if (mysqli_num_rows($email_result) > 0) {
-        array_push($errors, "A user with this email already exists, try again with another email address!");
+        array_push($error, "A user with this email already exists, try again with another email address!");
         goto display_error;
     }
 
@@ -54,12 +54,12 @@ if (isset($_POST["signup"])) {
 
     // if it fails to generate a random id tell the user to try again
     if ($attempt >= 5) {
-        array_push($errors, "Failed to generate random id, please try again :)");
+        array_push($error, "Failed to generate random id, please try again :)");
         goto display_error;
     }
 
     // if there are no errors
-    if (empty($errors)) {
+    if (empty($error)) {
         $hashpass = password_hash($pass, PASSWORD_DEFAULT); // hash the password
         $sql = "INSERT INTO users (id, email, username, password) VALUES ('$id', '$email', '$usern', '$hashpass')"; //query to create a user
         mysqli_query($conn, $sql);
@@ -70,15 +70,8 @@ if (isset($_POST["signup"])) {
         exit();
     } else {
         display_error:
-        // if there are errors display them in a popup
-        echo "
-    <div class='error-box'>
-        <h3>Registration Errors</h3>
-    <ul>";
-        foreach ($errors as $error) {
-            echo "<li>$error</li>";
-        }
-        echo "</ul></div>";
+        $error_name = "Signup Errors";
+        require_once '../components/errorbox.php';
     }
 }
 

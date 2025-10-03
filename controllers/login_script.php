@@ -38,14 +38,8 @@ if (isset($_POST["login"])) {
         exit();
     } else {
         display_error:
-        echo "
-    <div class='error-box'>
-        <h3>Login Errors</h3>
-    <ul>";
-        foreach ($error as $error) {
-            echo "<li>$error</li>";
-        }
-        echo "</ul></div>";
+        $error_name = "Login Errors";
+        require_once '../components/errorbox.php';
     }
 }
 
