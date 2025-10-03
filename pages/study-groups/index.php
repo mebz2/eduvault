@@ -27,7 +27,12 @@ require_once '../../controllers/create_group.php';
         <button class="create-group-button" id="create-group-button">Create Group</button>
     </div>
 
+    <div class="display-groups">
+
+    </div>
 </div>
+
+<!-- div for popup which is hidden by default -->
 <div class="popup" id="popup" style="display: <?php echo ($currentError) ? 'block' : 'none'; ?>">
     <div class="popup-content" id="popup-content">
         <form action="index.php" method="post" class="create-group">
