@@ -92,13 +92,13 @@ http://localhost/eduvault
 - [ ] Build study group page
   - [ ] The page to show every group you are in
     - [x] figure out a way to make it dynamic !
-    - [ ] fix the error that prevents you from creating multiple groups at once
+    - [x] fix the error that prevents you from creating multiple groups at once
   - [x] popup to create a group
-  - [ ] pages inside each group
-    - [ ] Files page
-      - [ ] design the page 
-        - [ ] upload files popup
-          - [ ] upload files logic
+- [ ] pages inside each group
+  - [ ] Files page
+    - [ ] design the page 
+      - [ ] upload files popup
+        - [ ] upload files logic
     - [ ] Members page
       - [ ] invite members popup
 

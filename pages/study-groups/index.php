@@ -1,4 +1,6 @@
 <?php
+require_once '../../controllers/fetch_groups.php';
+require_once '../../controllers/create_group.php';
 $stylesheets = array(
     '../../assets/css/study-groups.css',
     '../../assets/css/popup.css',
@@ -6,14 +8,13 @@ $stylesheets = array(
     '../../assets/css/errorbox.css'
 );
 
-require_once '../../controllers/fetch_groups.php';
 $title = "Study Groups";
 require_once '../../layout/header.php';
-require_once '../../controllers/create_group.php';
-
 require_once '../../helper/auth.php'; // to login the user if they are not logged in
 requireLogin();
 ?>
+
+
 
 <!-- if there is an error keep the blur on the parent div since the popup won't go away -->
 <div class="parent <?= ($currentError) ? 'blur' : '' ?>" id="parent">

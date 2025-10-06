@@ -55,8 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["create-button"])) {
                 // mark form as submitted to stop resubmission in reloads
                 $_SESSION["group_form_submitted"] = true;
 
-                // header('Location: index.php');
-                // exit();
+                header('Location: index.php');
+                exit();
             }
         }
     }
@@ -66,4 +66,4 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     unset($_SESSION["group_form_submitted"]);
 }
 
-mysqli_close($conn); //close connectiong
+mysqli_close($conn); //close connection
