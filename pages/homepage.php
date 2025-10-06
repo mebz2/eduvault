@@ -5,8 +5,10 @@ $stylesheets = array(
     '../assets/css/homepage.css'
 );
 $title = "Home";
-require_once('../layout/header.php');
+require_once '../layout/header.php';
 
+require_once '../helper/auth.php'; // to login the user if they are not logged in
+requireLogin();
 ?>
 <div class="navbar">
     <div class="logo">

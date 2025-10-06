@@ -5,9 +5,14 @@ $stylesheets = array(
     '../../assets/css/textbox.css',
     '../../assets/css/errorbox.css'
 );
+
+require_once '../../controllers/fetch_groups.php';
 $title = "Study Groups";
 require_once '../../layout/header.php';
 require_once '../../controllers/create_group.php';
+
+require_once '../../helper/auth.php'; // to login the user if they are not logged in
+requireLogin();
 ?>
 
 <!-- if there is an error keep the blur on the parent div since the popup won't go away -->
@@ -28,6 +33,17 @@ require_once '../../controllers/create_group.php';
     </div>
 
     <div class="display-groups">
+        <?php
+        if (!isset($no_groups)) {
+            foreach ($groups as $name => $description) {
+                $group_name = $name;
+                $group_description = $description;
+                include '../../components/group-card.php';
+            }
+        } else {
+            echo "<h3> You are not part of any group!</h3>";
+        }
+        ?>
 
     </div>
 </div>

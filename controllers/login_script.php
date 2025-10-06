@@ -50,7 +50,9 @@ if (isset($_POST["login"])) {
     }
 
     if (!$currentError) {
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         $_SESSION['username'] = $username;
         $_SESSION['user_id'] = $user_id;
         mysqli_close($conn);

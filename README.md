@@ -91,7 +91,8 @@ http://localhost/eduvault
 - [x] figure out a way for index.php to route the user based on sessions
 - [ ] Build study group page
   - [ ] The page to show every group you are in
-    -  [ ] figure out a way to make it dynamic
+    - [x] figure out a way to make it dynamic !
+    - [ ] fix the error that prevents you from creating multiple groups at once
   - [x] popup to create a group
   - [ ] pages inside each group
     - [ ] Files page
@@ -99,4 +100,9 @@ http://localhost/eduvault
         - [ ] upload files popup
           - [ ] upload files logic
     - [ ] Members page
+      - [ ] invite members popup
 
+### When there is extra time
+- [ ] implement paginification on study-groups page
+- [ ] show success message when successfully creating a group(use session["group form submitted"] variable)
+- [ ] .htaccess file

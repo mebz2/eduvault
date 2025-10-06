@@ -14,8 +14,9 @@ $error = array(
 );
 
 $currentError = null;
-
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["create-button"])) {
     if (!isset($_SESSION["group_form_submitted"])) {
         $group_name = trim(filter_input(INPUT_POST, "group-name", FILTER_SANITIZE_SPECIAL_CHARS));
@@ -53,6 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["create-button"])) {
 
                 // mark form as submitted to stop resubmission in reloads
                 $_SESSION["group_form_submitted"] = true;
+
+                // header('Location: index.php');
+                // exit();
             }
         }
     }
