@@ -15,12 +15,11 @@ $groups = array(); //[x]
 
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        $groups[$row['group_name']] = $row['group_description']; //[x]
+        $groups[$row['group_id']] = [
+            "name" => $row['group_name'],
+            "description" => $row['group_description']
+        ]; //[x]
     }
 } else {
     $no_groups = true;
 }
-
-// foreach ($groups as $name => $description) {
-//     echo $name . "=>" . $description . "<br>";
-// }

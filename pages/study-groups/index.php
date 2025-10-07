@@ -36,11 +36,12 @@ requireLogin();
     <div class="display-groups">
         <?php
         if (!isset($no_groups)) {
-            foreach ($groups as $name => $description) {
-                $group_name = $name;
-                $group_description = $description;
+            foreach ($groups as $id => $group) {
+                $group_id = $id;
+                $group_name = $group['name'];
+                $group_description = $group['description'];
         ?>
-                <a href="group/index.php" class="group-link">
+                <a href="group/index.php?id=<?= $group_id ?>&name=<?= urlencode($group_name) ?>" class="group-link">
                     <?php
                     include '../../components/group-card.php';
                     ?>

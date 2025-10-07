@@ -31,24 +31,6 @@ requireLogin();
                 </div>
             </a>
         </div>
-
-        <!-- <div class="recent-activity">
-            <div class="recent-activity-header-container">
-                <h2 class="recent-activity-header">Recent Activity</h2>
-                <p class="recent-activity-tag-line">
-                    Stay updated with your recent activities
-                </p>
-            </div>
-            <div class="activities-container">
-                <ul class="activities">
-                    <li>Task 1</li>
-                    <li>Task 1</li>
-                    <li>Task 1</li>
-                    <li>Task 1</li>
-                </ul>
-            </div>
-        </div> -->
-
     </div>
 </div>
 
