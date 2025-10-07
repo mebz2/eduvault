@@ -3,7 +3,7 @@ require_once '../../controllers/fetch_groups.php';
 require_once '../../controllers/create_group.php';
 $stylesheets = array(
     '../../assets/css/study-groups.css',
-    '../../assets/css/popup.css',
+    '../../assets/css/create-group-popup.css',
     '../../assets/css/textbox.css',
     '../../assets/css/errorbox.css'
 );
@@ -39,13 +39,18 @@ requireLogin();
             foreach ($groups as $name => $description) {
                 $group_name = $name;
                 $group_description = $description;
-                include '../../components/group-card.php';
+        ?>
+                <a href="group/index.php" class="group-link">
+                    <?php
+                    include '../../components/group-card.php';
+                    ?>
+                </a>
+        <?php
             }
         } else {
             echo "<h3> You are not part of any group!</h3>";
         }
         ?>
-
     </div>
 </div>
 

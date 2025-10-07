@@ -80,8 +80,7 @@
 
 .create-group-button:hover {
     cursor: pointer;
-    background-color: #004734;
-    box-shadow: 0px 0px 4px 5px lightgray;
+    box-shadow: 0px 0px 5px 3px var(--yellow_green);
 }
 
 
@@ -100,8 +99,7 @@
 .group {
     width: 375px;
     height: 270px;
-    /* border: solid 2px #BCFFDF; */
-    border: solid 2px green;
+    border: solid 1px #BCFFDF;
     border-radius: 10px;
     background-color: #E4F5ED;
     display: grid;
@@ -117,6 +115,19 @@
     padding-bottom: 0px;
 }
 
+.group-name {
+    font-size: 20px;
+}
+
+.group-description {
+    color: var(--light_text);
+    font-size: 14px;
+}
+
+.group-link {
+    text-decoration: none;
+    color: black;
+}
 
 
 .right-arrow {
