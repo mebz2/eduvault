@@ -97,11 +97,11 @@ http://localhost/eduvault
 - [ ] pages inside each group
   - [ ] Files page
     - [x] design the page 
-    - [ ] upload files popup
-      - [ ] design
-      - [ ] logic
+    - [x] upload files popup
+      - [x] design
+      - [x] logic
     - [ ] delete files
-    - [ ] download file
+    - [x] download file
 
     - [ ] Members page
       - [x] invite members popup

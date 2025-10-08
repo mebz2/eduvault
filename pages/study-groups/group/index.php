@@ -87,13 +87,15 @@ require_once '../../../layout/header.php';
                 </div>
                 <?php
                 foreach ($files as $id => $file) {
-                    $file_name = $file['file_name'];
-                    $file_size = $file['file_size'];
-                    $size_type = $file['size_type'];
-                    $file_type = $file['file_type'];
                     $file_path = $file['file_path'];
+                    if (file_exists($file_path)) { // check if the file exists in the uploads directory
+                        $file_name = $file['file_name'];
+                        $file_size = $file['file_size'];
+                        $size_type = $file['size_type'];
+                        $file_type = $file['file_type'];
 
-                    include '../../../components/group_file.php';
+                        include '../../../components/group_file.php';
+                    }
                 }
                 ?>
             </div>
