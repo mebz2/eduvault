@@ -25,7 +25,7 @@ require_once '../controllers/login_script.php';
                 include '../components/textfield.php';
                 ?>
                 <span class="error-text">
-                    <?php echo ($currentError && $error[$currentError]['id'] == "email") ? $error[$currentError]['message'] : '' ?>
+                    <?php echo ($login_error && $error['err']['id'] == "email") ? $error['err']['message'] : '' ?>
                 </span>
 
 
@@ -37,7 +37,7 @@ require_once '../controllers/login_script.php';
                 include '../components/textfield.php';
                 ?>
                 <span class="error-text">
-                    <?php echo ($currentError && $error[$currentError]['id'] == "password") ? $error[$currentError]['message'] : '' ?>
+                    <?php echo ($login_error && $error['err']['id'] == "password") ? $error['err']['message'] : '' ?>
                 </span>
                 <input type="submit" value="Login" name="login" class="login-button">
             </form>
@@ -48,5 +48,5 @@ require_once '../controllers/login_script.php';
 
 <?php
 require_once('../layout/footer.php');
-
+mysqli_close($conn);
 ?>
