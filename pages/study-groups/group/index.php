@@ -91,6 +91,7 @@ require_once '../../../layout/header.php';
                     $file_size = $file['file_size'];
                     $size_type = $file['size_type'];
                     $file_type = $file['file_type'];
+                    $file_path = $file['file_path'];
 
                     include '../../../components/group_file.php';
                 }
