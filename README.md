@@ -96,9 +96,13 @@ http://localhost/eduvault
   - [x] popup to create a group
 - [ ] pages inside each group
   - [ ] Files page
-    - [ ] design the page 
+    - [x] design the page 
     - [ ] upload files popup
-      - [ ] upload files logic
+      - [ ] design
+      - [ ] logic
+    - [ ] delete files
+    - [ ] download file
+
     - [ ] Members page
       - [x] invite members popup
       - [ ] leave group
@@ -113,3 +117,4 @@ http://localhost/eduvault
 - [ ] show success message when successfully creating a group(use session["group form submitted"] variable)
 - [ ] code cleanup
 - [ ] .htaccess file
+- [ ] clear the popups on exit so reloads dnt ask confirmation

@@ -1,0 +1,115 @@
+@import url("variables.css");
+
+.files-header {
+    width: 1060px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.files-header h1 {
+    font-size: 24px;
+}
+
+.files-header button {
+    width: 160px;
+    height: 40px;
+    background-color: white;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 4px 2px var(--light_text);
+    border-radius: 5px;
+}
+
+.files-header button:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 5px var(--yellow_green);
+}
+
+.file {
+    height: 100px;
+    width: 1050px;
+    margin-top: 40px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--light_green);
+    box-shadow: 0px 0px 10px 1px var(--light_text);
+    box-sizing: border-box;
+}
+
+
+
+.left-side {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    gap: 50px;
+    margin-left: 30px;
+}
+
+.left-side p {
+    font-weight: bold;
+    font-size: 25px;
+    color: #636363;
+}
+
+.left-side img {
+    /* border: solid black; */
+    height: 24px;
+    width: 24px;
+}
+
+.right-side {
+    margin-right: 30px;
+}
+
+.right-side button {
+    height: 40px;
+    width: 130px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 0px 4px 1px var(--light_text);
+}
+
+.right-side button:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 5px var(--yellow_green);
+}
+
+/* for popup */
+.file-popup {
+    background-color: white;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 350px;
+    border-radius: 10px;
+    z-index: 100;
+    box-shadow: 0px 0px 4px 5px lightgray;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.choose-file {
+    box-shadow: 0px 0px 4px 1px var(--light_text);
+    padding: 6px;
+    border-radius: 5px;
+    width: 100px;
+    height: 27px;
+}
+
+.choose-file:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 3px var(--yellow_green);
+}
