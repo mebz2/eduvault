@@ -2,70 +2,62 @@
 // to connect to the database
 require_once '../../../config/connect.php';
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $error = array(
     "email" => [
         "message" => ""
     ]
 );
+$memberError = false;
 
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+//  check for errors stored in the session 
+if (isset($_SESSION['invite-form_error'])) {
+    $error['email']['message'] = $_SESSION['invite-form_error'];
+    $memberError = true;
+    // unset the session variable so the error doesn't show up again on the next reload
+    unset($_SESSION['invite-form_error']);
 }
 
-$memberError = null;
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['invite-btn'])) {
-    if (!isset($_SESSION["invite-member-submitted"])) {
-        $email = trim(filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL));
+    $email = trim(filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL));
+    $current_error = null;
 
-        if (empty($email)) {
-            $error["email"]["message"] = "Email is required!";
+    if (empty($email)) {
+        $current_error = "Email is required!";
+        $memberError = true;
+    } else {
+        $find_user = "SELECT id FROM users WHERE email = '{$email}'";
+        $result = mysqli_query($conn, $find_user);
+
+        if (mysqli_num_rows($result) == 0) {
+            $current_error = "User with this email does not exist!";
             $memberError = true;
-        }
+        } else {
+            $row = mysqli_fetch_assoc($result);
+            $user_id = $row['id'];
 
-        if (empty($memberError)) {
-            // check if the user does not exist
-            $find_user = "SELECT id FROM users WHERE email = '{$email}'";
-            $result = mysqli_query($conn, $find_user);
+            $already_exists = "SELECT * FROM group_member WHERE user_id = '{$user_id}' AND group_id = '{$group_id}'";
+            $exists_result = mysqli_query($conn, $already_exists);
 
-            if (mysqli_num_rows($result) == 0) {
-                $error['email']['message'] = "User with this email does not exist!";
+            if (mysqli_num_rows($exists_result) > 0) {
+                $current_error = "User is already a member!";
                 $memberError = true;
-            } else {
-                // if the user exists check if the user is already a member
-                $get_user_id = "SELECT id FROM users WHERE email = '{$email}'";
-                $id_result = mysqli_query($conn, $get_user_id);
-
-                $row = mysqli_fetch_assoc($id_result);
-                $user_id = $row['id'];
-
-                $already_exists = "SELECT * FROM group_member WHERE user_id = '{$user_id}' AND group_id = '{$group_id}'";
-                $exists_result = mysqli_query($conn, $already_exists);
-
-                if (mysqli_num_rows($exists_result)) {
-                    $error['email']['message'] = "User is already a member!";
-                    $memberError = true;
-                }
             }
         }
-
-
-        // if the email passes all the checks insert it into the group_member table
-        if (empty($memberError)) {
-            $get_user_id = "SELECT id FROM users WHERE email = '{$email}'";
-            $id_result = mysqli_query($conn, $get_user_id);
-            $row = mysqli_fetch_assoc($id_result);
-            $user_id = $row['id'];
-            $add_member = "INSERT INTO group_member (group_id, user_id, role) VALUES ('$group_id', '$user_id', 'Member')";
-            mysqli_query($conn, $add_member);
-            $_SESSION['invite-member-submitted'] = true;
-            header('Location: index.php');
-            exit();
-        }
     }
-}
 
-if ($_SERVER["REQUEST_METHOD"] === "GET") {
-    unset($_SESSION["invite-member-submitted"]);
+    if ($current_error) {
+        $_SESSION['invite-form_error'] = $current_error;
+    } else {
+        $add_member = "INSERT INTO group_member (group_id, user_id, role) VALUES ('$group_id', '$user_id', 'Member')";
+        mysqli_query($conn, $add_member);
+    }
+
+    //  always redirect to prevent form resubmission 
+    header('Location: index.php');
+    exit();
 }

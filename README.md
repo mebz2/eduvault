@@ -115,7 +115,6 @@ http://localhost/eduvault
 - [ ] set up fonts
 - [ ] clean transitions on every clickable objects when hovered over
 - [ ] implement paginification on study-groups page
-- [ ] show success message when successfully creating a group(use session["group form submitted"] variable)
 - [ ] code cleanup
 - [ ] .htaccess file
 - [ ] clear the popups on exit so reloads dnt ask confirmation

@@ -3,30 +3,63 @@
 require_once '../../../config/connect.php';
 require_once '../../../controllers/generateId.php';
 
-$fileError = null;
-$ferror = array(
-    "file" => [
-        "message" => ""
-    ]
-);
-
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-if (isset($_POST['upload-btn'])) {
+$fileError = false;
+$ferror = [
+    "file" => [
+        "message" => ""
+    ]
+];
 
-    if (isset($_FILES['choose-file']) && $_FILES['choose-file']['error'] == 0) {
+if (isset($_SESSION['upload-form-error'])) {
+    $ferror['file']['message'] = $_SESSION['upload-form-error'];
+    $fileError = true;
+    unset($_SESSION['upload-form-error']);
+}
 
-        // user and group information ( the group id is already set in the group page )
-        $user_id = $_SESSION['user_id'];
+if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['upload-btn'])) {
 
-        // file information
+    $current_error = null;
+
+
+    if (!isset($_FILES['choose-file']) || $_FILES['choose-file']['error'] != 0) {
+        $current_error = "Please select a file to upload!";
+    } else {
+        $tmp = $_FILES['choose-file']['tmp_name'];
         $filename = $_FILES['choose-file']['name'];
-        $tmp = $_FILES['choose-file']['tmp_name']; // where the server stores the file temporarily 
-        $bytes = $_FILES['choose-file']['size']; // size in bytes
 
-        // file size in mbs or kbs
+        $attempts = 0;
+        do {
+            $id = generateID('F');
+            // SECURITY NOTE: This query is still vulnerable to SQL injection
+            $id_query = "SELECT * FROM files WHERE id = '{$id}'";
+            $id_exists = mysqli_query($conn, $id_query);
+            $attempts++;
+        } while (mysqli_num_rows($id_exists) > 0 && $attempts < 5);
+
+        if ($attempts >= 5) {
+            $current_error = "Failed to generate a unique ID, please try again!";
+        } else {
+            $root = $_SERVER['DOCUMENT_ROOT'];
+            $upload_dir = $root . '/eduvault/uploads/';
+            $path = $upload_dir . basename($filename);
+
+            if (!move_uploaded_file($tmp, $path)) {
+                $current_error = "Error: Couldn't move the file to the destination directory.";
+            }
+        }
+    }
+
+
+    if (!$current_error) {
+        $user_id = $_SESSION['user_id'];
+        $bytes = $_FILES['choose-file']['size'];
+        $extension = pathinfo($filename, PATHINFO_EXTENSION);
+        $name = pathinfo($filename, PATHINFO_FILENAME);
+
         if ($bytes < 1048576) {
             $file_size = round($bytes / 1024, 2);
             $size_type = 'KB';
@@ -35,44 +68,13 @@ if (isset($_POST['upload-btn'])) {
             $size_type = 'MB';
         }
 
-        $extension = pathinfo($filename, PATHINFO_EXTENSION); // returns the file extension
-        $name = pathinfo($filename, PATHINFO_FILENAME); // returns the file name without extension
-
-        // directory where file is uploaded
-        $root = $_SERVER['DOCUMENT_ROOT'];
-        $upload_dir = $root . '/eduvault/uploads/';
-        $path = $upload_dir . basename($filename);
-
-        // generate an id and if the id already exists try again (max of 5 times)
-        $attempts = 0;
-        do {
-            $id = generateID('F');
-            $id_query = "SELECT * FROM files WHERE id = '{$id}'";
-            $id_exists = mysqli_query($conn, $id_query);
-            $attempts++;
-        } while (mysqli_num_rows($id_exists) > 0 && $attempts < 5);
-
-        // if it fails to generate a random id tell the user to try again
-        if ($attempts >= 5) {
-            $ferror["file"]["message"] = "Failed to generate a unique ID, please try again!";
-            $fileError = true;
-        }
-
-
-        // moves it from tmp to path, from the temporary location to the location i give it
-        if (move_uploaded_file($tmp, $path) && !isset($fileError)) {
-            $upload_file = "INSERT INTO files (id, user_id, group_id, file_name, file_type, file_path, file_size, size_type) 
-                            VALUES ('$id', '$user_id', '$group_id', '$name', '$extension', '$path', '$file_size', '$size_type')";
-            mysqli_query($conn, $upload_file);
-            $fileError = false;
-            header("Location: index.php");
-            exit();
-        } else {
-            $fileError = true;
-            $ferror['file']['message'] = "Couldn't move the file to the uploads directory!";
-        }
+        $upload_file = "INSERT INTO files (id, user_id, group_id, file_name, file_type, file_path, file_size, size_type) 
+                        VALUES ('$id', '$user_id', '$group_id', '$name', '$extension', '$path', '$file_size', '$size_type')";
+        mysqli_query($conn, $upload_file);
     } else {
-        $fileError = true;
-        $ferror['file']['message'] = "Select a file!";
+        $_SESSION['upload-form-error'] = $current_error;
     }
+
+    header("Location: index.php");
+    exit();
 }

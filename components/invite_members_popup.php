@@ -1,4 +1,4 @@
-<div id="member-popup" class="member-popup" style="display: <?= ($memberError) ? 'block' : 'none'; ?>;">
+<div id="member-popup" class="member-popup" style="display: <?= ($memberError == true) ? 'block' : 'none'; ?>;">
     <div class="popup-content" id="popup-content">
         <form action="index.php" method="post" id="invite-member-form">
             <div>
