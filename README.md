@@ -45,7 +45,10 @@ http://localhost/phpmyadmin/index.php
    - user_id varchar(7) (Foreign key refrencing an id of a user from **users** table)
    - group_id varchar(7) (Foreign key refrencing an id of a group from **study_groups** table)
    - file_name varchar(255)
+   - file_type varchar(7)
    - file_path varchar(255)
+   - file_size FLOAT
+   - size_type ENUM('MB', 'KB')
    - uploaded_date datetime (DEFAULT(current date and time))
 
 - **If you chose a custom name for the database, change the specifications in *config/connect.php* found in the root directory. And if you gave any of the attributes custom names make sure to change the sql queries in the php files.**
