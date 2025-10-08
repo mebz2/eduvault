@@ -42,3 +42,21 @@ if (mysqli_num_rows($member_result)) {
         ];
     }
 }
+
+//get files
+$files = array();
+$fetch_files = "SELECT * FROM files 
+                WHERE group_id = '{$group_id}'
+";
+$file_result = mysqli_query($conn, $fetch_files);
+if (mysqli_num_rows($file_result)) {
+    while ($row = mysqli_fetch_assoc($file_result)) {
+        $files[$row['id']] = [
+            "file_name" => $row['file_name'],
+            "file_path" => $row['file_path'],
+            "file_type" => $row['file_type'],
+            "file_size" => $row['file_size'],
+            "size_type" => $row['size_type'],
+        ];
+    }
+}

@@ -86,7 +86,14 @@ require_once '../../../layout/header.php';
                     <button id="upload-file-button">Upload File</button>
                 </div>
                 <?php
-                include '../../../components/file.php';
+                foreach ($files as $id => $file) {
+                    $file_name = $file['file_name'];
+                    $file_size = $file['file_size'];
+                    $size_type = $file['size_type'];
+                    $file_type = $file['file_type'];
+
+                    include '../../../components/group_file.php';
+                }
                 ?>
             </div>
         </div>

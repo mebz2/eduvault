@@ -52,9 +52,18 @@
     margin-left: 30px;
 }
 
-.left-side p {
+.left-side h3 {
     font-weight: bold;
-    font-size: 25px;
+    font-size: 20px;
+    color: #636363;
+    max-width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+
+.left-side p {
     color: #636363;
 }
 
