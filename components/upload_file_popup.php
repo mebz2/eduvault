@@ -1,7 +1,7 @@
-<!-- <div id="file-popup" class="file-popup" style="display: <?= ($fileError) ? 'block' : 'none'; ?>;"> -->
-<div id="file-popup" class="file-popup" style="display: none;">
+<div id="file-popup" class="file-popup" style="display: <?= ($fileError == true) ? 'block' : 'none'; ?>;">
     <div class="popup-content">
-        <form action="index.php" method="post" id="file-upload-form">
+        <!-- enctype is so that the FILES global variable is set for the file name -->
+        <form action="index.php" method="post" id="file-upload-form" enctype="multipart/form-data">
             <div>
                 <h2>Upload File</h2>
                 <p class="tagline">Share study material with your group</p>
@@ -15,6 +15,11 @@
                 </label>
                 <input type="file" id="choose-file" name="choose-file">
                 <p id="filename">No file selected</p>
+            </div>
+            <div class="error-text">
+                <?php
+                echo ($fileError == true) ? $ferror['file']['message'] : '';
+                ?>
             </div>
             <div>
                 <input type="submit" value="Upload File" name="upload-btn">

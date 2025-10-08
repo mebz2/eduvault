@@ -64,8 +64,9 @@ if (isset($_POST['upload-btn'])) {
             $upload_file = "INSERT INTO files (id, user_id, group_id, file_name, file_type, file_path, file_size, size_type) 
                             VALUES ('$id', '$user_id', '$group_id', '$name', '$extension', '$path', '$file_size', '$size_type')";
             mysqli_query($conn, $upload_file);
-
             $fileError = false;
+            header("Location: index.php");
+            exit();
         } else {
             $fileError = true;
             $ferror['file']['message'] = "Couldn't move the file to the uploads directory!";

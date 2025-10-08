@@ -1,4 +1,11 @@
 <?php
+// Show all errors
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
+?>
+
+<?php
 session_start();
 //only set the variables when the user first enters the page
 if (!isset($_SESSION['group_id']) && isset($_GET['id']) && isset($_GET['name'])) {
@@ -14,6 +21,7 @@ requireLogin();
 
 require_once '../../../controllers/fetch_group_info.php';
 include '../../../controllers/invite_member.php';
+include '../../../controllers/upload_file.php';
 
 $stylesheets = array(
     '../../../assets/css/group.css',
@@ -86,63 +94,17 @@ require_once '../../../layout/header.php';
 </div>
 
 
-<!-- invite members popup -->
-
-<div id="member-popup" class="member-popup" style="display: <?= ($memberError) ? 'block' : 'none'; ?>;">
-    <div class="popup-content" id="popup-content">
-        <form action="index.php" method="post" id="invite-member-form">
-            <div>
-                <h2>Invite Members</h2>
-                <p class="tagline">Send invitation to join "<?= $group_name ?>" study group</p>
-                <div class="close-button" id="close-member-button">
-                    <img src="../../../assets/icons/close.png" alt="" class="close-image">
-                </div>
-            </div>
-
-            <?php
-            $label = "Email Address";
-            $type = "email";
-            $name = "email";
-            include '../../../components/textfield.php';
-            ?>
-            <div class="error-text">
-                <?php echo ($memberError) ? $error['email']['message'] : '' ?>
-            </div>
-            <div>
-                <input type="submit" value="Invite Member" name="invite-btn">
-            </div>
-        </form>
-    </div>
-</div>
+<?php
+//invite members popup
+require_once '../../../components/invite_members_popup.php';
+//upload file popup
+require_once '../../../components/upload_file_popup.php';
+?>
 
 
-<!-- upload file popup -->
-<!-- <div id="file-popup" class="file-popup" style="display: <?= ($fileError) ? 'block' : 'none'; ?>;"> -->
-<div id="file-popup" class="file-popup" style="display: none;">
-    <div class="popup-content">
-        <form action="index.php" method="post" id="file-upload-form">
-            <div>
-                <h2>Upload File</h2>
-                <p class="tagline">Share study material with your group</p>
-                <div class="close-button" id="close-file-button">
-                    <img src="../../../assets/icons/close.png" alt="" class="close-image">
-                </div>
-            </div>
-            <div>
-                <label for="choose-file" class="choose-file">
-                    Choose File
-                </label>
-                <input type="file" id="choose-file" name="choose-file">
-                <p id="filename">No file selected</p>
-            </div>
-            <div>
-                <input type="submit" value="Upload File" name="upload-btn">
-            </div>
-        </form>
-    </div>
-</div>
 
 <?php
+// footer
 $scripts = array(
     '../../../assets/js/showcontent.js',
     '../../../assets/js/group.js',
