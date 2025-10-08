@@ -182,7 +182,7 @@
     flex-direction: column;
     justify-content: center;
     background-color: var(--light_green);
-    box-shadow: 0px 0px 4px 1px var(--light_text);
+    box-shadow: 0px 0px 10px 1px var(--light_text);
     box-sizing: border-box;
 }
 

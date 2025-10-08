@@ -1,6 +1,12 @@
 <?php
+//unset these global variables
+session_start();
+unset($_SESSION['group_id'], $_SESSION['group_name']);
+
+
+
 require_once '../../controllers/fetch_groups.php';
-require_once '../../controllers/create_group.php';
+include '../../controllers/create_group.php';
 $stylesheets = array(
     '../../assets/css/study-groups.css',
     '../../assets/css/create-group-popup.css',

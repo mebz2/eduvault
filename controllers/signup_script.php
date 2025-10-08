@@ -95,6 +95,7 @@ if (isset($_POST["signup"])) {
             $sql = "INSERT INTO users (id, email, username, password) VALUES ('$id', '$email', '$usern', '$hashpass')"; //query to create a user
             mysqli_query($conn, $sql);
             session_start();
+            $_SESSION["user_id"] = $id;
             $_SESSION["username"] = $usern; //put the username in the session global variable
             mysqli_close($conn); //close the connection before redirecting
             header("Location: homepage.php");

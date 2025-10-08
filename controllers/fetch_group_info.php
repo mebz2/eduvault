@@ -42,4 +42,3 @@ if (mysqli_num_rows($member_result)) {
         ];
     }
 }
-mysqli_close($conn);

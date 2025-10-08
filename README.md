@@ -100,9 +100,14 @@ http://localhost/eduvault
     - [ ] upload files popup
       - [ ] upload files logic
     - [ ] Members page
-      - [ ] invite members popup
+      - [x] invite members popup
+      - [ ] leave group
+      - [ ] delete group
+      - [ ] kickout member
+
 
 ### When there is extra time
+- [ ] set up fonts
 - [ ] clean transitions on every clickable objects when hovered over
 - [ ] implement paginification on study-groups page
 - [ ] show success message when successfully creating a group(use session["group form submitted"] variable)
