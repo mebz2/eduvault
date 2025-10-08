@@ -1,4 +1,5 @@
 <?php
+session_start();
 $stylesheets = array(
     '../assets/css/signup.css',
     '../assets/css/textbox.css',
@@ -22,7 +23,7 @@ require_once '../controllers/signup_script.php';
                 include '../components/textfield.php';
                 ?>
                 <span class="error-text">
-                    <?php echo ($currentError && $error[$currentError]['id'] == "username") ? $error[$currentError]['message'] : '' ?>
+                    <?php echo ($sign_up_error && $error['err']['id'] == "username") ? $error['err']['message'] : '' ?>
                 </span>
 
                 <?php
@@ -32,7 +33,7 @@ require_once '../controllers/signup_script.php';
                 include '../components/textfield.php';
                 ?>
                 <span class="error-text">
-                    <?php echo ($currentError && $error[$currentError]['id'] == "email") ? $error[$currentError]['message'] : '' ?>
+                    <?php echo ($sign_up_error && $error['err']['id'] == "email") ? $error['err']['message'] : '' ?>
                 </span>
 
                 <?php
@@ -42,7 +43,7 @@ require_once '../controllers/signup_script.php';
                 include '../components/textfield.php';
                 ?>
                 <span class="error-text">
-                    <?php echo ($currentError && $error[$currentError]['id'] == "password") ? $error[$currentError]['message'] : '' ?>
+                    <?php echo ($sign_up_error && $error['err']['id'] == "password") ? $error['err']['message'] : '' ?>
                 </span>
 
                 <?php
@@ -52,7 +53,7 @@ require_once '../controllers/signup_script.php';
                 include '../components/textfield.php';
                 ?>
                 <span class="error-text">
-                    <?php echo ($currentError && $error[$currentError]['id'] == "cpassword") ? $error[$currentError]['message'] : '' ?>
+                    <?php echo ($sign_up_error && $error['err']['id'] == "cpassword") ? $error['err']['message'] : '' ?>
                 </span>
                 <input type="submit" name="signup" value="Create Account" class="signup-button">
             </form>
@@ -63,5 +64,5 @@ require_once '../controllers/signup_script.php';
 
 <?php
 require_once('../layout/footer.php');
-
+mysqli_close($conn);
 ?>
