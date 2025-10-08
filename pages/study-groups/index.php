@@ -23,7 +23,7 @@ requireLogin();
 
 
 <!-- if there is an error keep the blur on the parent div since the popup won't go away -->
-<div class="parent <?= ($currentError) ? 'blur' : '' ?>" id="parent">
+<div class="parent <?= ($create_group_error) ? 'blur' : '' ?>" id="parent">
     <div class="navbar">
         <div class="logo">
             <a href="../homepage.php" class="back">
@@ -62,7 +62,7 @@ requireLogin();
 </div>
 
 <!-- div for popup which is hidden by default -->
-<div class="popup" id="popup" style="display: <?php echo ($currentError) ? 'block' : 'none'; ?>">
+<div class="popup" id="popup" style="display: <?php echo ($create_group_error) ? 'block' : 'none'; ?>">
     <div class="popup-content" id="popup-content">
         <form action="index.php" method="post" class="create-group">
             <div>
@@ -81,7 +81,7 @@ requireLogin();
                 ?>
                 <!-- if there is an error display the error message -->
                 <div class="error-text">
-                    <?php echo ($currentError && $error[$currentError]['id'] == "group_name") ? $error[$currentError]['message'] : '' ?>
+                    <?php echo ($create_group_error && $error['err']['id'] == "group_name") ? $error['err']['message'] : '' ?>
                 </div>
             </div>
             <div>
@@ -89,7 +89,7 @@ requireLogin();
                 <textarea name="group-description" class="group-description" id="" rows="5"></textarea>
                 <!-- if there is an error display the error message -->
                 <div class="error-text">
-                    <?php echo ($currentError && $error[$currentError]['id'] == "group_description") ? $error[$currentError]['message'] : '' ?>
+                    <?php echo ($create_group_error && $error['err']['id'] == "group_description") ? $error['err']['message'] : '' ?>
                 </div>
             </div>
             <div>
@@ -104,4 +104,5 @@ $scripts = array(
     '../../assets/js/create_group.js',
 );
 require_once '../../layout/footer.php';
+mysqli_close($conn); //close connection
 ?>

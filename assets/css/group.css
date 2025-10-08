@@ -91,6 +91,10 @@
 
 .group-info p {
     color: var(--light_text);
+    max-width: 900px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .group-info div {
