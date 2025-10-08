@@ -111,6 +111,7 @@ http://localhost/eduvault
 
 
 ### When there is extra time
+- [ ] fix page reloads for invite member and create group popup
 - [ ] set up fonts
 - [ ] clean transitions on every clickable objects when hovered over
 - [ ] implement paginification on study-groups page
