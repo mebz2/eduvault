@@ -18,7 +18,7 @@
             </div>
             <div class="error-text">
                 <?php
-                echo ($fileError == true) ? $ferror['file']['message'] : '';
+                echo ($fileError == true) ? $ferror : '';
                 ?>
             </div>
             <div>

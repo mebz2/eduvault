@@ -8,14 +8,11 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $fileError = false;
-$ferror = [
-    "file" => [
-        "message" => ""
-    ]
-];
+$ferror = '';
 
+// same logic as sing up and login
 if (isset($_SESSION['upload-form-error'])) {
-    $ferror['file']['message'] = $_SESSION['upload-form-error'];
+    $ferror = $_SESSION['upload-form-error'];
     $fileError = true;
     unset($_SESSION['upload-form-error']);
 }
