@@ -3,12 +3,14 @@ require_once '../config/connect.php';
 require_once '../controllers/generateId.php';
 
 $error = array();
-$sign_up_error = false;
+$sign_up_error = false; // error flag to check if there are any errors
 
+// start session if it is not currently running
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// the rest is the same as login_script.php
 if (isset($_SESSION['signup-error'])) {
     $error = $_SESSION['signup-error'];
     $sign_up_error = true;

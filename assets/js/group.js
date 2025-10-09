@@ -18,18 +18,11 @@ function showContent(id, button) {
 
 const parent = document.getElementById('parent')
 
-// invite member popup
+// create blur when invite member popup appears
 const invite_button = document.getElementById('invite-members-btn')
 const close_member = document.getElementById('close-member-button')
 const member_popup = document.getElementById('member-popup');
 const member_form = document.getElementById('invite-member-form')
-
-// upload file popup
-const upload_button = document.getElementById('upload-file-button')
-const close_file = document.getElementById('close-file-button')
-const file_popup = document.getElementById('file-popup');
-const file_form = document.getElementById('file-upload-form')
-
 
 invite_button.addEventListener('click', () => {
     member_popup.style.display = "block"
@@ -41,7 +34,11 @@ close_member.addEventListener('click', () => {
     parent.classList.remove('blur')
 })
 
-
+// create blur when upload file popup appears
+const upload_button = document.getElementById('upload-file-button')
+const close_file = document.getElementById('close-file-button')
+const file_popup = document.getElementById('file-popup');
+const file_form = document.getElementById('file-upload-form')
 
 upload_button.addEventListener('click', () => {
     file_popup.style.display = "block"
@@ -55,7 +52,7 @@ close_file.addEventListener('click', () => {
 
 
 
-// to get the file name 
+// to get the file name to display in the popup after file selection
 const fileInput = document.getElementById('choose-file')
 const filename = document.getElementById('filename')
 

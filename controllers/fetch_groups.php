@@ -1,8 +1,12 @@
 <?php
 require_once '../../config/connect.php'; // to connect to the database
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// fetch groups where the current user is a part of
+
 $user_id = $_SESSION["user_id"]; //[x]
 $fetch_query = "
     SELECT gm.group_id, g.group_name, g.id, g.group_description

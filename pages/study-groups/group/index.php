@@ -1,6 +1,7 @@
 <?php
 session_start();
-//only set the variables when the user first enters the page
+//only store the id and name from the url first so that it is not lost on reload or any other requests
+//if the user goes back to the groups page these variables are unset
 if (!isset($_SESSION['group_id']) && isset($_GET['id']) && isset($_GET['name'])) {
     $_SESSION['group_id'] = $_GET['id'];
     $_SESSION['group_name'] = $_GET['name'];

@@ -9,6 +9,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// similar logic to sign up and login pages
 if (isset($_SESSION['create-group-error'])) {
     $error = $_SESSION['create-group-error'];
     $create_group_error = true;
@@ -50,7 +51,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["create-button"])) {
 
     if (!$create_group_error) {
         $user_id = $_SESSION["user_id"];
-        $create_group = "INSERT INTO study_groups (id, group_name, group_description, group_creator) VALUES('$id', '$group_name', '$group_description', '$user_id')";
+        $create_group = "INSERT INTO study_groups (id, group_name, group_description, group_creator) 
+                        VALUES('$id', '$group_name', '$group_description', '$user_id')";
         mysqli_query($conn, $create_group);
 
         $add_member = "INSERT INTO group_member (group_id, user_id, role) VALUES('$id', '$user_id', 'admin')";

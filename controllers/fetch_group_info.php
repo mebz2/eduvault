@@ -1,5 +1,8 @@
 <?php
 require_once '../../../config/connect.php';
+
+// this script get the information for the group you are in right now (after you click on one of the groups)
+
 //get member count
 $fetch_info = "SELECT COUNT(*) AS member_count
                 FROM group_member
@@ -35,6 +38,7 @@ $fetch_members = "SELECT gm.user_id AS user_id,
 
 $member_result = mysqli_query($conn, $fetch_members);
 if (mysqli_num_rows($member_result)) {
+    // store members and member information in an array
     while ($row = mysqli_fetch_assoc($member_result)) {
         $members[$row['user_id']] = [
             "username" => $row['username'],
@@ -50,6 +54,7 @@ $fetch_files = "SELECT * FROM files
 ";
 $file_result = mysqli_query($conn, $fetch_files);
 if (mysqli_num_rows($file_result)) {
+    // store files and file information in an array
     while ($row = mysqli_fetch_assoc($file_result)) {
         $files[$row['id']] = [
             "file_name" => $row['file_name'],

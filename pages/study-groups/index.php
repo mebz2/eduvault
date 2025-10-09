@@ -1,5 +1,7 @@
 <?php
-//unset these global variables
+//unset these (they are set when you click on a group)
+//they are stored on session because we want to change 
+//the values based on which group is clicked
 session_start();
 unset($_SESSION['group_id'], $_SESSION['group_name']);
 
@@ -40,6 +42,7 @@ requireLogin();
     </div>
 
     <div class="display-groups">
+        <!-- loop through the groups fetched by the script and display them  -->
         <?php
         if (!isset($no_groups)) {
             foreach ($groups as $id => $group) {
@@ -47,6 +50,7 @@ requireLogin();
                 $group_name = $group['name'];
                 $group_description = $group['description'];
         ?>
+                <!-- add the group name and id in the url so that we can use it to fetch group data of the group you want using the id in the group page -->
                 <a href="group/index.php?id=<?= $group_id ?>&name=<?= urlencode($group_name) ?>" class="group-link">
                     <?php
                     include '../../components/group-card.php';
