@@ -53,7 +53,7 @@ http://localhost/phpmyadmin/index.php
 - **If you chose a custom name for the database, change the specifications in *config/connect.php* found in the root directory. And if you gave any of the attributes custom names make sure to change the sql queries in the php files.**
 
 ### ER Diagram
-![](assets/images/er-diagram.png)
+![](assets/images/Highlight%20ER%20diagram.png)
 ### Step 4
 - After installation and setup go to **htdocs** which is found in the directory you installed **xampp**.
 
@@ -116,7 +116,7 @@ http://localhost/eduvault
 
 ### When there is extra time
 - [x] fix page reloads for invite member and create group popup
-- [ ] set up fonts
+- [x] set up fonts
 - [ ] clean transitions on every clickable objects when hovered over
 - [ ] implement pagination on study-groups page
 - [x] code cleanup

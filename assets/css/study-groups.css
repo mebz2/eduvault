@@ -1,6 +1,10 @@
 @import url("variables.css");
 
-.parent {
+body {
+    margin-top: 0px;
+}
+
+parent {
     display: flex;
     flex-direction: column;
     align-items: center;
