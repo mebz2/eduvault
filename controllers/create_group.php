@@ -51,8 +51,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["create-button"])) {
 
     if (!$create_group_error) {
         $user_id = $_SESSION["user_id"];
-        $create_group = "INSERT INTO study_groups (id, group_name, group_description, group_creator) 
-                        VALUES('$id', '$group_name', '$group_description', '$user_id')";
+        $create_group = "INSERT INTO study_groups (id, group_name, group_description) 
+        VALUES('$id', '$group_name', '$group_description')";
         mysqli_query($conn, $create_group);
 
         $add_member = "INSERT INTO group_member (group_id, user_id, role) VALUES('$id', '$user_id', 'admin')";

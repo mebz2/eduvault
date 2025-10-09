@@ -34,7 +34,6 @@ http://localhost/phpmyadmin/index.php
    - group_name varchar(100)
    - group_description text
    - creation_date datetime (DEFAULT(current date time))
-   - group_creator varchar(7) (Foreign key refrencing an id of a user from **users** table)
 3. **group_member**
    - group_id varchar(7) (Foreign key refrencing an id of a group from **study_groups** table) 
    - user_id varchar(7) (Foreign key refrencing an id of a user from **users** table)
