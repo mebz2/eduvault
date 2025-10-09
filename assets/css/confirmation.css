@@ -1,0 +1,33 @@
+.confirmation {
+    background-color: white;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 150px;
+    border-radius: 10px;
+    z-index: 100;
+    box-shadow: 0px 0px 4px 5px lightgray;
+    display: flex;
+    justify-content: center;
+}
+
+.confirmation-message {
+    font-size: 16px;
+}
+
+.delete-popup-content {
+    display: flex;
+    justify-content: left;
+    margin-left: 0px;
+}
+
+#delete-btn {
+    width: 200px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+}

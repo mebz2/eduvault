@@ -1,20 +1,6 @@
 <?php
 require_once '../../../config/connect.php';
 
-// if (session_status() == PHP_SESSION_NONE) {
-//     session_start();
-// }
-
-$edit_error = array();
-$editError = false;
-
-// if (isset($_SESSION['edit-group-error'])) {
-//     $edit_error = $_SESSION['edit-group-error'];
-//     $editError = true;
-
-//     unset($_SESSION['edit-group-error']);
-// }
-
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['edit-btn'])) {
     $currentError = array();
 

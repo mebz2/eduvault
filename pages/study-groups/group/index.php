@@ -17,6 +17,7 @@ require_once '../../../controllers/fetch_group_info.php';
 include '../../../controllers/invite_member.php';
 include '../../../controllers/upload_file.php';
 include '../../../controllers/edit_group.php';
+include '../../../controllers/delete_group.php';
 
 $stylesheets = array(
     '../../../assets/css/group.css',
@@ -26,6 +27,7 @@ $stylesheets = array(
     '../../../assets/css/files.css',
     '../../../assets/css/upload-file.css',
     '../../../assets/css/edit-group-popup.css',
+    '../../../assets/css/confirmation.css',
     '../../../assets/css/textbox.css'
 );
 
@@ -55,7 +57,10 @@ require_once '../../../layout/header.php';
                 <p><?php echo $member_count . " ";
                     echo ($member_count == 1) ? 'member' : 'members' ?> </p>
             </div>
-            <button id="edit-group-btn">Edit</button>
+            <div>
+                <button id="edit-group-btn" style="display: <?= ($_SESSION['user_id'] == $admin_id) ? 'block' : 'none' ?>;">Edit</button>
+                <button id="delete-group-btn" style="display: <?= ($_SESSION['user_id'] == $admin_id) ? 'block' : 'none' ?>;">Delete</button>
+            </div>
         </div>
 
         <div class="button-container">
@@ -108,6 +113,8 @@ require_once '../../../components/invite_members_popup.php';
 require_once '../../../components/upload_file_popup.php';
 // edit group popup
 require_once '../../../components/edit_group_popup.php';
+// delete group confirmation
+require_once '../../../components/delete_group_confirmation.php';
 ?>
 
 

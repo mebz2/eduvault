@@ -98,6 +98,9 @@ http://localhost/eduvault
     - [x] fix the error that prevents you from creating multiple groups at once
   - [x] popup to create a group
 - [ ] pages inside each group
+  - [x] edit group description
+  - [x] edit group name
+  - [x] delete group
   - [ ] Files page
     - [x] design the page 
     - [x] upload files popup
@@ -117,6 +120,6 @@ http://localhost/eduvault
 - [x] fix page reloads for invite member and create group popup
 - [ ] set up fonts
 - [ ] clean transitions on every clickable objects when hovered over
-- [ ] implement paginification on study-groups page
-- [ ] code cleanup
+- [ ] implement pagination on study-groups page
+- [x] code cleanup
 - [ ] .htaccess file

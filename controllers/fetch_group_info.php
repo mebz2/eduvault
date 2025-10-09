@@ -3,6 +3,13 @@ require_once '../../../config/connect.php';
 
 // this script get the information for the group you are in right now (after you click on one of the groups)
 
+//get admin
+$fetch_admin = "SELECT user_id FROM group_member WHERE group_id = '{$group_id}' AND role = 'Admin'";
+$admin_result = mysqli_query($conn, $fetch_admin);
+if ($row = mysqli_fetch_assoc($admin_result)) {
+    $admin_id = $row['user_id'];
+}
+
 //get member count
 $fetch_info = "SELECT COUNT(*) AS member_count
                 FROM group_member
@@ -14,6 +21,7 @@ $result = mysqli_query($conn, $fetch_info);
 if ($row = mysqli_fetch_assoc($result)) {
     $member_count = $row['member_count'];
 }
+
 
 //get group description
 $fetch_description = "SELECT group_description FROM study_groups WHERE id = '{$group_id}'";
