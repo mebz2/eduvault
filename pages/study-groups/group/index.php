@@ -16,6 +16,7 @@ requireLogin();
 require_once '../../../controllers/fetch_group_info.php';
 include '../../../controllers/invite_member.php';
 include '../../../controllers/upload_file.php';
+include '../../../controllers/edit_group.php';
 
 $stylesheets = array(
     '../../../assets/css/group.css',
@@ -24,6 +25,7 @@ $stylesheets = array(
     '../../../assets/css/member.css',
     '../../../assets/css/files.css',
     '../../../assets/css/upload-file.css',
+    '../../../assets/css/edit-group-popup.css',
     '../../../assets/css/textbox.css'
 );
 
@@ -53,6 +55,7 @@ require_once '../../../layout/header.php';
                 <p><?php echo $member_count . " ";
                     echo ($member_count == 1) ? 'member' : 'members' ?> </p>
             </div>
+            <button id="edit-group-btn">Edit</button>
         </div>
 
         <div class="button-container">
@@ -103,6 +106,8 @@ require_once '../../../layout/header.php';
 require_once '../../../components/invite_members_popup.php';
 //upload file popup
 require_once '../../../components/upload_file_popup.php';
+// edit group popup
+require_once '../../../components/edit_group_popup.php';
 ?>
 
 

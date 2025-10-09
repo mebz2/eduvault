@@ -104,6 +104,22 @@
     gap: 20px;
 }
 
+.group-info button {
+    width: 100px;
+    height: 30px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 0px 4px 2px var(--light_text);
+}
+
+.group-info button:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 3px var(--yellow_green);
+
+}
+
 .member-image {
     height: 25px;
 }
