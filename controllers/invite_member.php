@@ -6,18 +6,14 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$error = array(
-    "email" => [
-        "message" => ""
-    ]
-);
+$error = '';
 $memberError = false;
 
-//  check for errors stored in the session 
+//  same logic as sign in and login
 if (isset($_SESSION['invite-form_error'])) {
-    $error['email']['message'] = $_SESSION['invite-form_error'];
+    $error = $_SESSION['invite-form_error'];
     $memberError = true;
-    // unset the session variable so the error doesn't show up again on the next reload
+
     unset($_SESSION['invite-form_error']);
 }
 
@@ -30,6 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['invite-btn'])) {
         $current_error = "Email is required!";
         $memberError = true;
     } else {
+
+        // check if the user exists and if it does wether or not the user is already a member
         $find_user = "SELECT id FROM users WHERE email = '{$email}'";
         $result = mysqli_query($conn, $find_user);
 
@@ -49,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['invite-btn'])) {
             }
         }
     }
+
 
     if ($current_error) {
         $_SESSION['invite-form_error'] = $current_error;

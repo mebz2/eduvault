@@ -16,7 +16,7 @@
             include '../../../components/textfield.php';
             ?>
             <div class="error-text">
-                <?php echo ($memberError) ? $error['email']['message'] : '' ?>
+                <?php echo ($memberError) ? $error : '' ?>
             </div>
             <div>
                 <input type="submit" value="Invite Member" name="invite-btn">
