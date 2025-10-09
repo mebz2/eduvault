@@ -10,7 +10,7 @@ if (session_status() === PHP_SESSION_NONE) {
 $fileError = false;
 $ferror = '';
 
-// same logic as sing up and login
+// same logic as sign up and login
 if (isset($_SESSION['upload-form-error'])) {
     $ferror = $_SESSION['upload-form-error'];
     $fileError = true;
@@ -31,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['upload-btn'])) {
         $attempts = 0;
         do {
             $id = generateID('F');
-            // SECURITY NOTE: This query is still vulnerable to SQL injection
             $id_query = "SELECT * FROM files WHERE id = '{$id}'";
             $id_exists = mysqli_query($conn, $id_query);
             $attempts++;
