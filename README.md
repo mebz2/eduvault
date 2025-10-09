@@ -35,8 +35,8 @@ http://localhost/phpmyadmin/index.php
    - group_description text
    - creation_date datetime (DEFAULT(current date time))
 3. **group_member**
-   - group_id varchar(7) (Foreign key refrencing an id of a group from **study_groups** table) 
-   - user_id varchar(7) (Foreign key refrencing an id of a user from **users** table)
+   - group_id varchar(7) (Foreign key refrencing an id of a group from **study_groups** table) (IN RELATION VIEW SET ON DELETE CASCADE)
+   - user_id varchar(7) (Foreign key refrencing an id of a user from **users** table) (IN RELATION VIEW SET ON DELETE CASCADE)
    - joined_date datetime (DEFAULT(current date and time))
    - role enum('member', 'admin')
 4. **files**
