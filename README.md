@@ -55,7 +55,7 @@ http://localhost/phpmyadmin/index.php
 ### ER Diagram
 ![](assets/images/er-diagram.png)
 ### Step 4
-- After you installation and setup go to **htdocs** which is found in the directory you installed **xampp**.
+- After installation and setup go to **htdocs** which is found in the directory you installed **xampp**.
 
 For Linux:
 ```bash
