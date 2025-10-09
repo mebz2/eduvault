@@ -17,6 +17,7 @@ require_once '../../../controllers/fetch_group_info.php';
 include '../../../controllers/invite_member.php';
 include '../../../controllers/upload_file.php';
 include '../../../controllers/edit_group.php';
+include '../../../controllers/leave_group.php';
 include '../../../controllers/delete_group.php';
 
 $stylesheets = array(
@@ -60,6 +61,7 @@ require_once '../../../layout/header.php';
             <div>
                 <button id="edit-group-btn" style="display: <?= ($_SESSION['user_id'] == $admin_id) ? 'block' : 'none' ?>;">Edit</button>
                 <button id="delete-group-btn" style="display: <?= ($_SESSION['user_id'] == $admin_id) ? 'block' : 'none' ?>;">Delete</button>
+                <button id="leave-group-btn" style="display: <?= ($_SESSION['user_id'] != $admin_id) ? 'block' : 'none' ?>;">Leave</button>
             </div>
         </div>
 
@@ -115,6 +117,8 @@ require_once '../../../components/upload_file_popup.php';
 require_once '../../../components/edit_group_popup.php';
 // delete group confirmation
 require_once '../../../components/delete_group_confirmation.php';
+// leave group confirmation
+require_once '../../../components/leave_group_confirmation.php';
 ?>
 
 

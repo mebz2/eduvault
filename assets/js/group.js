@@ -95,3 +95,17 @@ close_delete.addEventListener('click', () => {
     parent.classList.remove('blur')
 })
 
+// leave group popup
+const leave_button = document.getElementById('leave-group-btn')
+const close_leave = document.getElementById('close-leave-btn')
+const leave_conf = document.getElementById('leave-group-confirmation-popup')
+
+leave_button.addEventListener('click', () => {
+    leave_conf.style.display = 'block'
+    parent.classList.add('blur')
+})
+
+close_leave.addEventListener('click', () => {
+    leave_conf.style.display = 'none'
+    parent.classList.remove('blur')
+})

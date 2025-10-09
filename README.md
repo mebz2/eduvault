@@ -100,7 +100,6 @@ http://localhost/eduvault
 - [ ] pages inside each group
   - [x] edit group description
   - [x] edit group name
-  - [x] delete group
   - [ ] Files page
     - [x] design the page 
     - [x] upload files popup
@@ -111,8 +110,8 @@ http://localhost/eduvault
 
     - [ ] Members page
       - [x] invite members popup
-      - [ ] leave group
-      - [ ] delete group
+      - [x] leave group
+      - [x] delete group
       - [ ] kickout member
 
 
