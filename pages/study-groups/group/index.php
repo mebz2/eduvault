@@ -109,7 +109,6 @@ require_once '../../../components/upload_file_popup.php';
 <?php
 // footer
 $scripts = array(
-    '../../../assets/js/showcontent.js',
     '../../../assets/js/group.js',
 );
 require_once '../../../layout/footer.php';
