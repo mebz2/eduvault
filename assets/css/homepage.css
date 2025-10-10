@@ -1,8 +1,39 @@
 @import url("variables.css");
 
-body {
-    margin: 0px;
+@font-face {
+    font-family: 'OpenSans';
+    src: url('../fonts/OpenSans-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
 }
+
+@font-face {
+    font-family: 'OpenSans';
+    src: url('../fonts/OpenSans-Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'OpenSans';
+    src: url('../fonts/OpenSans-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenSans';
+    src: url('../fonts/OpenSans-SemiBold.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+
+body {
+    font-family: 'OpenSans', sans-serif;
+    font-weight: 400;
+}
+
 
 /* navbar  */
 .navbar {
@@ -26,14 +57,14 @@ body {
 
 .brand-name {
     font-size: 40px;
-    font-weight: bold;
+    font-weight: 700;
     margin-top: 45px;
     margin-bottom: 5px;
 }
 
 .brand-tag-line {
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 700;
     margin-top: 5px;
 }
 
@@ -46,7 +77,7 @@ body {
     background-color: #eee5e5;
     border: 2px solid #FF0707;
     color: #FF0000;
-    font-weight: bold;
+    font-weight: 700;
     border-radius: 5px;
 }
 
