@@ -14,13 +14,6 @@ close.addEventListener('click', () => {
     parent.classList.remove('blur')
 })
 
-//make the arrow appear when the group card is hovered on
-const cards = Array.from(document.getElementsByClassName('group')) // because it returns a collection, i do this to change it into a normal array
-
-cards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-    })
-})
 
 
 
