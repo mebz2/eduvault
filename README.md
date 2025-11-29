@@ -1,5 +1,5 @@
 # README
-
+### NOTE: This project is being redone using MERN stack and another name [here](https://github.com/mebz2/nexus)
 ## Description
 
 - **EduVault** is a collaborative learning platform that helps students and educators organize, share, and engage with study materials more effectively. It brings together key tools in one space, making group learning seamless and productive.
